@@ -25,7 +25,17 @@ namespace WpfAppDemoCPCBhathi
             InitializeComponent();
         }
 
-        
+        private void userID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void userpw_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        /*
         private void btnclick(object sender, RoutedEventArgs e)
         {
             if(hi.IsChecked == true)
@@ -37,5 +47,6 @@ namespace WpfAppDemoCPCBhathi
                 MessageBox.Show("bye world");
             }
         }
+        */
     }
 }

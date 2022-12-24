@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,102,0,0" TextWrapping="Wrap" Text="Select a message option and then choose the Display button." VerticalAlignment="Top"/>
-        <RadioButton x:Name="hi" Content="hello world" IsChecked="True" HorizontalAlignment="Left" Margin="100,230,0,0" VerticalAlignment="Top" Height="16"/>
-        <RadioButton x:Name ="bye" Content="good bye" HorizontalAlignment="Left" Margin="100,265,0,0" VerticalAlignment="Top"/>
-        <Button Content="Click" HorizontalAlignment="Left" Margin="100,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.71,4.937" Click="btnclick" Height="21" Width="78"/>
-
+        <Grid Background="Coral">
+            <Button x:Name="loginbtn" Content="log in" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.202,3.208"/>
+            <TextBox x:Name="userid" HorizontalAlignment="Center" Margin="0,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Cursor="Hand" UndoLimit="90" AutomationProperties.ItemType="" AutomationProperties.Name="lbluserID" TextChanged="userID_TextChanged"/>
+            <Label x:Name="lbl1" Content="Enter your ID here  " HorizontalAlignment="Left" Margin="336,137,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="lbl2" Content="Enter your passward here" HorizontalAlignment="Left" Margin="336,186,0,0" VerticalAlignment="Top" Width="152"/>
+            <PasswordBox x:Name="userpw" HorizontalAlignment="Center" Margin="0,212,0,0" VerticalAlignment="Top" Width="120"/>
+        </Grid>
     </Grid>
 </Window>
