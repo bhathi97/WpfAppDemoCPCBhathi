@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WpfAppDemoCPCBhathi
 {
@@ -24,16 +26,56 @@ namespace WpfAppDemoCPCBhathi
         {
             InitializeComponent();
         }
-
+        SqlConnection connection = new SqlConnection(@"Data Source=BHATHIYABANDARA;Initial Catalog=CPC;Integrated Security=True");
+    
         private void userID_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            userid.Focus();
         }
 
         private void userpw_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+        
+
+        private void loginbtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Window2 window2 = new Window2();
+            //window2.Show();
+            //work until here
+ 
+            string id = userid.Text;
+            string pw = userpw.Password;
+            try
+            {
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM login WHERE userID='" + userid.Text + "' AND userPW='" + userpw.Password + "'", connection);
+
+                DataTable dt = new DataTable(); //this is creating a virtual table  
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+                    this.Hide();
+                    new Window2().Show();
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("invalid login","Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                userid.Clear();
+                userpw.Clear();
+
+                userid.Focus();
+            }
+            finally 
+            {
+                connection.Close();
+            }
+            
+        }
+
+  
+
 
         /*
         private void btnclick(object sender, RoutedEventArgs e)
