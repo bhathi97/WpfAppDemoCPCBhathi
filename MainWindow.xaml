@@ -7,15 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="grid1" Background="Coral">
-            <Button x:Name="loginbtn" Content="log in" HorizontalAlignment="Center" Margin="0,289,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.202,3.208" Width="140" Height="27" Click="loginbtn_Click"/>
+        <Grid x:Name="grid1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Rectangle HorizontalAlignment="Center" Height="246" Margin="0,107,0,0" Stroke="Black" VerticalAlignment="Top" Width="488"/>
+            <Button x:Name="loginbtn" Content="log in" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.202,3.208" Width="140" Height="28" Click="loginbtn_Click" Background="#FFF50E0E" Foreground="#FFEFEFEF" FontFamily="Microsoft YaHei" FontSize="14" FontWeight="Bold" BorderThickness="1,1,1,1" Cursor="Hand" BorderBrush="#FFEFEBEB" OpacityMask="#FFC50707"/>
             <Grid HorizontalAlignment="Center" Height="26" Margin="0,186,0,0" VerticalAlignment="Top" Width="297">
-                <TextBox x:Name="userid" HorizontalAlignment="Left" Margin="157,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="140" Cursor="Hand" UndoLimit="90" AutomationProperties.ItemType="" AutomationProperties.Name="lbluserID" TextChanged="userID_TextChanged"/>
-                <Label x:Name="lbl1" Content="Enter your ID here            :" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <TextBox x:Name="userid" HorizontalAlignment="Left" Margin="157,-10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Cursor="Hand" UndoLimit="90" AutomationProperties.ItemType="" AutomationProperties.Name="lbluserID" TextChanged="userID_TextChanged" BorderBrush="#FF080808"/>
+                <Label x:Name="lbl1" Content="Enter your ID here            :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Foreground="#FF090A0A" FontFamily="Segoe UI Semibold" Margin="0,-14,0,0"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Height="26" VerticalAlignment="Top" Width="296" Margin="0,217,0,0">
-                <Label x:Name="lbl2" Content="Enter your passward here :" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152" />
-                <PasswordBox x:Name="userpw" HorizontalAlignment="Left" Margin="157,0,0,0" VerticalAlignment="Center" Width="140" RenderTransformOrigin="0.5,0.392"/>
+                <Label x:Name="lbl2" Content="Enter your passward here :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Foreground="#FF090A0A" FontFamily="Segoe UI Semibold" Margin="0,-14,0,0" />
+                <PasswordBox x:Name="userpw" HorizontalAlignment="Left" Margin="157,-10,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,0.392" BorderBrush="#FF090A0A"/>
             </Grid>
         </Grid>
     </Grid>

@@ -10,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfAppDemoCPCBhathi
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for uc01.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class uc01 : UserControl
     {
-        public Window2()
+        public uc01()
         {
             InitializeComponent();
         }
-
- 
     }
 }
