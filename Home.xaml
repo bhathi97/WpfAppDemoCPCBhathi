@@ -9,27 +9,33 @@
     <Grid Margin="0,0,0,0">
 
         <Grid Margin="2,2,2,4" VerticalAlignment="Top" Height="26">
-            <Label Content="Intern salary entering system - demo" Cursor="Arrow" IsEnabled="False" FontWeight="Bold" FontFamily="Arial Black" Background="{x:Null}" Foreground="#FF020202" HorizontalAlignment="Left" />
+            <Label Content="Intern salary entering system - demo" Cursor="Arrow" IsEnabled="False" FontWeight="Bold" FontFamily="Arial Black" Background="{x:Null}" Foreground="#FF020202" HorizontalAlignment="Left" Width="300" />
             <Border BorderThickness="1" CornerRadius="9" BorderBrush="Black" />
 
+            <Grid Width="64" HorizontalAlignment="Right" Margin="0,0,4,0" >
 
-            <Button x:Name="btnClose" Cursor="Hand" Margin="772,3,4,3" Background="#FFF70404" Foreground="White" FontWeight="Bold" Width="20" Content="X" HorizontalAlignment="Right" Click="btnClose_Click" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"></Setter>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-
-
-
-
-
-
-
-
-
+                <Button x:Name="btnClose" Cursor="Hand" Margin="44,3,0,3" Background="#FFF70404" Foreground="White" FontWeight="Bold" Content="X" Click="btnClose_Click" BorderBrush="Black" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnMax" Cursor="Hand" Margin="0,3,0,3" Background="#FF08A50A" Foreground="White" FontWeight="Bold" Width="20" Content="^" HorizontalAlignment="Center" Click="btnClose_Click" BorderBrush="#FF0C0101" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnMin" Cursor="Hand" Margin="0,3,0,3" Background="#FFD2C210" Foreground="White" FontWeight="Bold" Width="20" Content="-" HorizontalAlignment="Left" Click="btnClose_Click" BorderBrush="#FF060000" FontFamily="Cascadia Mono SemiBold" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
         </Grid>
 
 

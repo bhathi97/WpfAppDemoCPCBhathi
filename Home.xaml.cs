@@ -49,5 +49,15 @@ namespace WpfAppDemoCPCBhathi
             this.Close();
 
         }
+
+        private void btnMax_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnMin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
