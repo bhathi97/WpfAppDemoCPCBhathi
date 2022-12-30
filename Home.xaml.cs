@@ -43,5 +43,11 @@ namespace WpfAppDemoCPCBhathi
         {
             uc1.Content = new uc01();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

@@ -7,7 +7,33 @@
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800">
     <Grid Margin="0,0,0,0">
-        <Grid Width="150" HorizontalAlignment="Left" >
+
+        <Grid Margin="2,2,2,4" VerticalAlignment="Top" Height="26">
+            <Label Content="Intern salary entering system - demo" Cursor="Arrow" IsEnabled="False" FontWeight="Bold" FontFamily="Arial Black" Background="{x:Null}" Foreground="#FF020202" HorizontalAlignment="Left" />
+            <Border BorderThickness="1" CornerRadius="9" BorderBrush="Black" />
+
+
+            <Button x:Name="btnClose" Cursor="Hand" Margin="772,3,4,3" Background="#FFF70404" Foreground="White" FontWeight="Bold" Width="20" Content="X" HorizontalAlignment="Right" Click="btnClose_Click" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+
+
+
+
+
+
+
+
+
+        </Grid>
+
+
+        <Grid Width="150" HorizontalAlignment="Left" Margin="2,30,2,2">
             <Border BorderThickness="1" CornerRadius="20" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" HorizontalAlignment="Left">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -27,13 +53,17 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid Margin="152,2,2,2">
-            <Border BorderThickness="1" CornerRadius="20" BorderBrush="#FF2F2626" />
-            <ContentControl x:Name="uc1" Margin="0,0,0,0" Uid="load1" AutomationProperties.Name="load1" Background="Black"/>
+        <Grid Margin="156,30,2,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="105*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="1" CornerRadius="20" BorderBrush="#FF2F2626" Grid.ColumnSpan="2" />
+            <ContentControl x:Name="uc1" Uid="load1" AutomationProperties.Name="load1" Background="Black" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" FontSize="14"/>
         </Grid>
 
     </Grid>
-        
+
 
 
 
