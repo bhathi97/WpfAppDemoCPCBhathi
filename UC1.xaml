@@ -6,63 +6,61 @@
              xmlns:local="clr-namespace:WpfAppDemoCPCBhathi"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#FFE0D1D1" Margin="-2,0,2,0">
-        <Grid Margin="-10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="809" >
+    <Grid Margin="-2,0,2,0" Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
+        <Label Content="Add salary details here" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Microsoft Sans Serif" Width="166"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="810" Height="450" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="28*"/>
+                <ColumnDefinition Width="357*"/>
+                <ColumnDefinition Width="425*"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid Background="Aqua" Width="300" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,16,0,0" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="#FF2F2626" />
+            <Grid Width="345" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,16,0,0" Grid.Column="1" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,4,0" />
                 <Label Content="User ID " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="User Name" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0" FontFamily="Microsoft Sans Serif" Height="19"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,4" Height="18"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="235" Margin="0,4,10,0" FontFamily="Microsoft Sans Serif" Height="19"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="235" Margin="0,0,10,4" Height="18"/>
             </Grid>
 
-            <Grid Background="Aqua" Width="300" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,75,0,0" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="#FF2F2626" />
-                <Label Content="No of Days (8/9)" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
-                <Label Content="Salary per day" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="113" FontFamily="Microsoft Sans Serif" Margin="0,0,0,2"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="178" Margin="0,4,4,0" FontFamily="Microsoft Sans Serif" Height="19"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="178" Margin="0,0,4,4" Height="18"/>
-                <Label Content="No of Days (4/4.5)" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="113" FontFamily="Microsoft Sans Serif" Margin="0,0,187,0"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="178" Margin="0,30,4,0" FontFamily="Microsoft Sans Serif" Height="19"/>
+            <Grid Width="350" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,75,0,0" Grid.Column="1" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,10,0" />
+                <Label Content="No of Days (8/9)" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="130" FontFamily="Microsoft Sans Serif" />
+                <Label Content="Salary per day" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="130" FontFamily="Microsoft Sans Serif" Margin="0,0,0,2"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18"/>
+                <Label Content="No of Days (4/4.5)" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="130" FontFamily="Microsoft Sans Serif"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
 
             </Grid>
 
 
-            <Grid Background="Aqua" Width="300" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="476,134,0,0" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="#FF2F2626" HorizontalAlignment="Center" Width="300" Margin="0,0,0,-4" />
+            <Grid Width="300" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,134,0,0" Grid.Column="2" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="300" Margin="0,0,0,-4" />
                 <Label Content="Start Date " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="End Date" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif" Margin="4,0,0,2"/>
                 <DatePicker HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0"/>
                 <DatePicker HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,0"/>
             </Grid>
 
-            <Grid Background="Aqua" Width="300" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="475,15,0,0" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="#FF2F2626" HorizontalAlignment="Center" Width="300" />
+            <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,15,0,0" Grid.Column="2" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" />
+                <Label Content="Bank Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
+                <Label Content="Bank ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="215" Margin="0,4,4,0"/>
+                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="215" Margin="0,0,4,4"/>
+            </Grid>
+
+            <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,74,0,0" Grid.Column="2" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" />
                 <Label Content="Bank Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Bank ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
                 <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="4,4,4,4"/>
                 <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4"/>
             </Grid>
 
-            <Grid Background="Aqua" Width="300" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="475,74,0,0" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="#FF2F2626" HorizontalAlignment="Center" Width="300" />
-                <Label Content="Bank Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
-                <Label Content="Bank ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="4,4,4,4"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4"/>
-            </Grid>
-
-
-            <Grid Margin="40,212,33,-68">
-
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="White" Offset="0.185"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <Button Content="ADD" HorizontalAlignment="Left" Margin="196,0,0,0" VerticalAlignment="Center" Width="89" Height="30" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" FontFamily="Microsoft Sans Serif">
+            <Grid Margin="12,212,33,186" Grid.Column="1" Grid.ColumnSpan="2">
+                <Button Content="ADD" HorizontalAlignment="Left" Margin="196,0,0,0" VerticalAlignment="Center" Width="89" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -75,7 +73,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button Content="UPDATE" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" FontFamily="Microsoft Sans Serif">
+                <Button Content="UPDATE" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -89,7 +87,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button Content="DELETE" HorizontalAlignment="Left" Margin="416,0,0,0" VerticalAlignment="Center" Width="88" Height="30" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" FontFamily="Microsoft Sans Serif">
+                <Button Content="DELETE" HorizontalAlignment="Left" Margin="416,0,0,0" VerticalAlignment="Center" Width="88" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -103,6 +101,10 @@
                     </Button.BorderBrush>
                 </Button>
             </Grid>
+            <DataGrid Margin="12,267,33,26" Grid.Column="1" Grid.ColumnSpan="2" />
+
+
+
         </Grid>
     </Grid>
 </UserControl>

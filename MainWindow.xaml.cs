@@ -57,7 +57,7 @@ namespace WpfAppDemoCPCBhathi
                 if (dt.Rows[0][0].ToString() == "1")
                 {
                     this.Hide();
-                    new Window2().Show();
+                    new Home().Show();
                 }
             }
             catch 
