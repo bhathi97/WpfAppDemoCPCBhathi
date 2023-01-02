@@ -41,7 +41,7 @@ namespace WpfAppDemoCPCBhathi
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            uc1.Content = new uc01();
+            uc1.Content = new UC1();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -52,12 +52,14 @@ namespace WpfAppDemoCPCBhathi
 
         private void btnMax_Click(object sender, RoutedEventArgs e)
         {
-            
+                
         }
 
         private void btnMin_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+        
     }
 }

@@ -41,6 +41,7 @@ namespace WpfAppDemoCPCBhathi
 
         private void loginbtn_Click(object sender, RoutedEventArgs e)
         {
+            
             //Window2 window2 = new Window2();
             //window2.Show();
             //work until here
@@ -74,7 +75,15 @@ namespace WpfAppDemoCPCBhathi
             
         }
 
-  
+        private void cancelbtn_Click(object sender, RoutedEventArgs e)
+        {
+            userid.Clear();
+            userpw.Clear();
+
+            userid.Focus();
+        }
+
+
 
 
         /*

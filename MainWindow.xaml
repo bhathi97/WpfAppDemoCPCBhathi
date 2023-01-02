@@ -7,21 +7,61 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="grid1">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Rectangle HorizontalAlignment="Center" Height="246" Margin="0,107,0,0" Stroke="Black" VerticalAlignment="Top" Width="488"/>
-            <Button x:Name="loginbtn" Content="log in" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.202,3.208" Width="140" Height="28" Click="loginbtn_Click" Background="#FFF50E0E" Foreground="#FFEFEFEF" FontFamily="Microsoft YaHei" FontSize="14" FontWeight="Bold" BorderThickness="1,1,1,1" Cursor="Hand" BorderBrush="#FFEFEBEB" OpacityMask="#FFC50707"/>
+        <Grid x:Name="grid1" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}">
+
+            <Grid HorizontalAlignment="Center" Height="85" Margin="0,243,0,0" VerticalAlignment="Top" Width="628">
+
+                <Button x:Name="loginbtn" Content="Login" HorizontalAlignment="Left"  VerticalAlignment="Center" RenderTransformOrigin="0.202,3.208" Width="140" Height="54" Click="loginbtn_Click" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" FontFamily="Microsoft Sans Serif" FontSize="16" FontWeight="Bold" BorderThickness="1,1,1,1" Cursor="Hand" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" OpacityMask="Black" Margin="400,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                    <Button.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0.48"/>
+                            <GradientStop Color="White" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.BorderBrush>
+                </Button>
+
+                <Button x:Name="cancelbtn" Content="Cancel" HorizontalAlignment="Left"  VerticalAlignment="Center" RenderTransformOrigin="0.202,3.208" Width="140" Height="53" Click="cancelbtn_Click" FontFamily="Microsoft Sans Serif" FontSize="16" FontWeight="Bold" BorderThickness="1,1,1,1" Cursor="Hand" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" OpacityMask="Black" Margin="255,0,0,0" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                    <Button.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0.292"/>
+                            <GradientStop Color="#FFF9F8F8"/>
+                        </LinearGradientBrush>
+                    </Button.BorderBrush>
+                </Button>
+
+            </Grid>
+
             <Grid HorizontalAlignment="Center" Height="26" Margin="0,186,0,0" VerticalAlignment="Top" Width="297">
-                <TextBox x:Name="userid" HorizontalAlignment="Left" Margin="157,-10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Cursor="Hand" UndoLimit="90" AutomationProperties.ItemType="" AutomationProperties.Name="lbluserID" TextChanged="userID_TextChanged" BorderBrush="#FF080808"/>
-                <Label x:Name="lbl1" Content="Enter your ID here            :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Foreground="#FF090A0A" FontFamily="Segoe UI Semibold" Margin="0,-14,0,0"/>
+                <TextBox x:Name="userid" HorizontalAlignment="Left" Margin="157,-10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Cursor="Hand" UndoLimit="90" AutomationProperties.ItemType="" AutomationProperties.Name="lbluserID" TextChanged="userID_TextChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+                <Label x:Name="lbl1" Content="Enter your ID              :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Foreground="#FF090A0A" FontFamily="Microsoft Sans Serif" Margin="0,-14,0,0" FontWeight="Bold"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Height="26" VerticalAlignment="Top" Width="296" Margin="0,217,0,0">
-                <Label x:Name="lbl2" Content="Enter your passward here :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Foreground="#FF090A0A" FontFamily="Segoe UI Semibold" Margin="0,-14,0,0" />
-                <PasswordBox x:Name="userpw" HorizontalAlignment="Left" Margin="157,-10,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,0.392" BorderBrush="#FF090A0A"/>
+                <Label x:Name="lbl2" Content="Enter your passward :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Foreground="#FF090A0A" FontFamily="Microsoft Sans Serif" Margin="0,-14,0,0" FontWeight="Bold" />
+                <PasswordBox x:Name="userpw" HorizontalAlignment="Left" Margin="157,-10,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,0.392" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
             </Grid>
+            <Label BorderThickness="1" Content="Please Login to Access this Application " HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top" Width="450" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" FontWeight="Bold" FontFamily="Microsoft Sans Serif" FontSize="24" Height="40">
+                <Label.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7" />
+                    </Style>
+                </Label.Resources>
+                <Label.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.BorderBrush>
+            </Label>
         </Grid>
     </Grid>
 </Window>

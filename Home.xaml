@@ -6,45 +6,67 @@
         xmlns:local="clr-namespace:WpfAppDemoCPCBhathi"
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800">
-    <Grid Margin="0,0,0,0">
+    <Grid Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}">
 
-        <Grid Margin="2,2,2,4" VerticalAlignment="Top" Height="26">
-            <Label Content="Intern salary entering system - demo" Cursor="Arrow" IsEnabled="False" FontWeight="Bold" FontFamily="Arial Black" Background="{x:Null}" Foreground="#FF020202" HorizontalAlignment="Left" Width="300" />
-            <Border BorderThickness="1" CornerRadius="9" BorderBrush="Black" />
+        <Grid Margin="2,2,2,0" VerticalAlignment="Top" Height="27">
+            <Label Content="Intern salary entering system - demo" Cursor="Arrow" IsEnabled="False" FontFamily="Microsoft Sans Serif" Background="{x:Null}" Foreground="#FF020202" HorizontalAlignment="Left" Width="300" FontSize="14" />
+
 
             <Grid Width="64" HorizontalAlignment="Right" Margin="0,0,4,0" >
 
-                <Button x:Name="btnClose" Cursor="Hand" Margin="44,3,0,3" Background="#FFF70404" Foreground="White" FontWeight="Bold" Content="X" Click="btnClose_Click" BorderBrush="Black" >
+                <Button x:Name="btnClose" Cursor="Hand" Margin="44,3,0,3" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontWeight="Bold" Content="X" Click="btnClose_Click" >
                     <Button.Resources>
+
+
+
+
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
                         </Style>
                     </Button.Resources>
+                    <Button.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="White" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.BorderBrush>
                 </Button>
-                <Button x:Name="btnMax" Cursor="Hand" Margin="0,3,0,3" Background="#FF08A50A" Foreground="White" FontWeight="Bold" Width="20" Content="^" HorizontalAlignment="Center" Click="btnClose_Click" BorderBrush="#FF0C0101" >
+                <Button x:Name="btnMax" Cursor="Hand" Margin="0,3,0,3" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontWeight="Bold" Width="20" Content="^" HorizontalAlignment="Center" Click="btnMax_Click" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
+                    <Button.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="White" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.BorderBrush>
                 </Button>
-                <Button x:Name="btnMin" Cursor="Hand" Margin="0,3,0,3" Background="#FFD2C210" Foreground="White" FontWeight="Bold" Width="20" Content="-" HorizontalAlignment="Left" Click="btnClose_Click" BorderBrush="#FF060000" FontFamily="Cascadia Mono SemiBold" >
+                <Button x:Name="btnMin" Cursor="Hand" Margin="0,3,0,3" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontWeight="Bold" Width="20" Content="-" HorizontalAlignment="Left" Click="btnClose_Click" FontFamily="Cascadia Mono SemiBold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
+                    <Button.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="White" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.BorderBrush>
                 </Button>
             </Grid>
         </Grid>
 
 
         <Grid Width="150" HorizontalAlignment="Left" Margin="2,30,2,2">
-            <Border BorderThickness="1" CornerRadius="20" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" HorizontalAlignment="Left">
+            <Border BorderThickness="1" CornerRadius="20" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" HorizontalAlignment="Left">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="blue" Offset="0.961"/>
+                        <GradientStop Color="#FFF4F6F7"/>
+                        <GradientStop Color="Black" Offset="0.569"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
                 <Grid>
@@ -52,10 +74,61 @@
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="429*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="btn1" Content="Record salary" Margin="0,64,0,0" Width="148" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Foreground="#FF0C0B0B" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontWeight="Bold" FontSize="14" VerticalAlignment="Top" Grid.Row="1" Click="btn1_Click"/>
-                    <Button x:Name="btn2" Content="Data " Margin="0,139,0,0" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Foreground="#FF0C0B0B" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontWeight="Bold" FontSize="14" Width="148" VerticalAlignment="Top" Grid.Row="1"/>
-                    <Button x:Name="btn3" Content="Search" Margin="0,215,0,0" Width="148" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Foreground="#FF0C0B0B" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontWeight="Bold" FontSize="14" VerticalAlignment="Top" Click="btn3_Click" Grid.Row="1"/>
-                    <Button x:Name="btn4" Content="All details" Margin="0,290,0,0" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Foreground="#FF0C0B0B" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontWeight="Bold" FontSize="14" Width="148" VerticalAlignment="Top" Click="btn1_Copy2_Click" Grid.Row="1"/>
+                    <Button x:Name="btn1" Content="Record salary" Margin="0,64,0,0" Width="148" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="#FF0C0B0B" FontWeight="Bold" FontSize="14" VerticalAlignment="Top" Grid.Row="1" Click="btn1_Click" FontFamily="Microsoft Sans Serif" >
+                        <Button.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Button.BorderBrush>
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5" />
+                            </Style>
+                        </Button.Resources>
+
+
+
+                    </Button>
+                    <Button x:Name="btn2" Content="Data " Margin="0,139,0,0" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="#FF0C0B0B" FontWeight="Bold" FontSize="14" Width="148" VerticalAlignment="Top" Grid.Row="1" FontFamily="Microsoft Sans Serif">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5" />
+                            </Style>
+                        </Button.Resources>
+                        <Button.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Button.BorderBrush>
+                    </Button>
+                    <Button x:Name="btn3" Content="Search" Margin="0,215,0,0" Width="148" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="#FF0C0B0B" FontWeight="Bold" FontSize="14" VerticalAlignment="Top" Click="btn3_Click" Grid.Row="1" FontFamily="Microsoft Sans Serif">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5" />
+                            </Style>
+                        </Button.Resources>
+                        <Button.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Button.BorderBrush>
+                    </Button>
+                    <Button x:Name="btn4" Content="All details" Margin="0,290,0,0" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="#FF0C0B0B" FontWeight="Bold" FontSize="14" Width="148" VerticalAlignment="Top" Click="btn1_Copy2_Click" Grid.Row="1" FontFamily="Microsoft Sans Serif">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5" />
+                            </Style>
+                        </Button.Resources>
+                        <Button.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Button.BorderBrush>
+                    </Button>
                 </Grid>
             </Border>
         </Grid>
@@ -65,7 +138,14 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Border BorderThickness="1" CornerRadius="20" BorderBrush="#FF2F2626" Grid.ColumnSpan="2" />
-            <ContentControl x:Name="uc1" Uid="load1" AutomationProperties.Name="load1" Background="Black" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" FontSize="14"/>
+            <ContentControl x:Name="uc1" Uid="load1" AutomationProperties.Name="load1" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" FontSize="14" Margin="7,0,-7,0" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}">
+                <ContentControl.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0.786"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </ContentControl.BorderBrush>
+            </ContentControl>
         </Grid>
 
     </Grid>
