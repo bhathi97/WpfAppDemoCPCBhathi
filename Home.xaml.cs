@@ -46,22 +46,23 @@ namespace WpfAppDemoCPCBhathi
             uc1.Content = new UC1();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-
-        }
+        
 
         private void btnMax_Click(object sender, RoutedEventArgs e)
         {
-                
+                //still constructing
+        }
+
+        
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void btnMin_Click(object sender, RoutedEventArgs e)
         {
-
+            this.WindowState = WindowState.Minimized;
         }
-
-        
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Xml.Linq;
 
 namespace WpfAppDemoCPCBhathi
 {
@@ -44,7 +47,6 @@ namespace WpfAppDemoCPCBhathi
         }
 
         
-
         private void salary_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -144,39 +146,96 @@ namespace WpfAppDemoCPCBhathi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string uID = userID.Text;
-            string uName = userName.Text;
-            DateTime stDate = DateTime.Parse(start.Text);
-            DateTime endDate = DateTime.Parse(end.Text);
-            string bkName = bankName.Text;
-            string bkID = bankID.Text;
-            string brName = branchName.Text;
-            string brID = BranchID.Text;
-
-            int daySal = int.Parse(salary.Text);
-            int fDay = int.Parse(fullDays.Text);
-            int hDay = int.Parse(halfDays.Text);
-
-            float dTotal = fDay + (hDay/2);
-            float sTotal = dTotal * daySal;
-
-
-            try 
+            if (string.IsNullOrEmpty(userID.Text))
             {
-                connection.Open();
-                SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('"+ uID + "','"+ uName + "','"+ stDate +"','" +endDate + "','" +bkID+ "','" + brID + "','" +fDay+ "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')",connection);
-                c1.ExecuteNonQuery();
-                GetdtToShow();
-                MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);       
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                userID.Focus();
             }
-            catch(Exception ex)
+            else if (string.IsNullOrEmpty(userName.Text))
             {
-                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                userName.Focus();
             }
-            finally
+            else if (string.IsNullOrEmpty(start.Text))
             {
-                connection.Close();
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                start.Focus();
             }
+            else if (string.IsNullOrEmpty(end.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                end.Focus();
+            }
+            else if (string.IsNullOrEmpty(bankName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                bankName.Focus();
+            }
+            else if (string.IsNullOrEmpty(bankID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                bankID.Focus();
+            }
+            else if (string.IsNullOrEmpty(branchName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                branchName.Focus();
+            }
+            else if (string.IsNullOrEmpty(BranchID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                BranchID.Focus();
+            }
+            else if (string.IsNullOrEmpty(salary.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                salary.Focus();
+            }
+            else if (string.IsNullOrEmpty(fullDays.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                fullDays.Focus();
+            }
+            else if (string.IsNullOrEmpty(halfDays.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                halfDays.Focus();
+            }
+            else
+            {
+                string uID = userID.Text;
+                string uName = userName.Text;
+                DateTime stDate = DateTime.Parse(start.Text);
+                DateTime endDate = DateTime.Parse(end.Text);
+                string bkName = bankName.Text;
+                string bkID = bankID.Text;
+                string brName = branchName.Text;
+                string brID = BranchID.Text;
+                int daySal = int.Parse(salary.Text);
+                int fDay = int.Parse(fullDays.Text);
+                int hDay = int.Parse(halfDays.Text);
+                float dTotal = fDay + (hDay / 2);
+                float sTotal = dTotal * daySal;
+
+                try
+                {
+
+                    connection.Open();
+                    SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + stDate + "','" + endDate + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
+                    c1.ExecuteNonQuery();
+                    GetdtToShow();
+                    MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+            } 
 
         }
 
@@ -194,7 +253,7 @@ namespace WpfAppDemoCPCBhathi
             try
             {
                 connection.Open();
-                //GetdtToShow();
+                GetdtToShow();
             }
             catch(Exception ex) 
             {
@@ -207,5 +266,37 @@ namespace WpfAppDemoCPCBhathi
             
             
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                SqlCommand c3 = new SqlCommand("DELETE FROM data WHERE ID = '" + sBox.Text + "'", connection);
+                c3.ExecuteNonQuery();
+                GetdtToShow();
+                MessageBox.Show("Successfully deleted from table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        private void sBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                delBtn.Focus();
+            }
+        }
+
+        
+
     }
 }

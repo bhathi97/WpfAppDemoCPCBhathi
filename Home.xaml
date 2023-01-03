@@ -45,7 +45,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button x:Name="btnMin" Cursor="Hand" Margin="0,3,0,3" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontWeight="Bold" Width="20" Content="-" HorizontalAlignment="Left" Click="btnClose_Click" FontFamily="Cascadia Mono SemiBold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" >
+                <Button x:Name="btnMin" Cursor="Hand" Margin="0,3,0,3" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontWeight="Bold" Width="20" Content="-" HorizontalAlignment="Left" Click="btnMin_Click" FontFamily="Cascadia Mono SemiBold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>

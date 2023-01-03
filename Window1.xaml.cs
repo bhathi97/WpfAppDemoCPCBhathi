@@ -27,7 +27,7 @@ namespace WpfAppDemoCPCBhathi
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //cc.Content = new UC1();
-            MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+           // MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

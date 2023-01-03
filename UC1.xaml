@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfAppDemoCPCBhathi"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="-2,0,2,0">
+    <Grid Margin="-2,0,2,0" Background="#FFF4F6F7">
         <Label Content="Add salary details here" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Microsoft Sans Serif" Width="166"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="810" Height="450" >
             <Grid.ColumnDefinitions>
@@ -34,6 +34,13 @@
             </Grid>
 
 
+            <Grid Width="350" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,165,0,0" Grid.Column="1" Grid.ColumnSpan="2" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,10,26" />
+                <Label Content="Delete User ID =" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="121" FontFamily="Microsoft Sans Serif" Margin="20,12,0,0"/>
+                <TextBox x:Name="sBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="146,14,0,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="sBox_KeyDown"/>
+            </Grid>
+
+
             <Grid Width="300" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,134,0,0" Grid.Column="2" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="300" Margin="0,0,0,-4" />
                 <Label Content="Start Date " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
@@ -58,7 +65,7 @@
                 <TextBox x:Name="BranchID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4" KeyDown="BranchID_KeyDown"/>
             </Grid>
 
-            <Grid Margin="12,212,33,186" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid Margin="12,218,33,180" Grid.Column="1" Grid.ColumnSpan="2">
                 <Button x:Name="addToTable" Content="ADD" HorizontalAlignment="Left" Margin="196,0,0,0" VerticalAlignment="Center" Width="89" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -86,7 +93,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button Content="DELETE" HorizontalAlignment="Left" Margin="416,0,0,0" VerticalAlignment="Center" Width="88" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif">
+                <Button x:Name="delBtn" Content="DELETE" HorizontalAlignment="Left" Margin="416,0,0,11" VerticalAlignment="Bottom" Width="88" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click_2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
