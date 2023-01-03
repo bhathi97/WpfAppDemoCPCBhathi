@@ -67,7 +67,7 @@ namespace WpfAppDemoCPCBhathi
 
 
             }
-            catch 
+            catch(Exception ex)
             {
                 
                 MessageBox.Show("connection error","Error", MessageBoxButton.OK, MessageBoxImage.Error);

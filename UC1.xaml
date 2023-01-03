@@ -19,19 +19,18 @@
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,4,0" />
                 <Label Content="User ID " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="User Name" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox x:Name="userID" HorizontalAlignment="Right" VerticalAlignment="Top" Width="235" Margin="0,4,10,0" FontFamily="Microsoft Sans Serif" Height="19" TextChanged="TextBox_TextChanged"/>
-                <TextBox x:Name="userName" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="235" Margin="0,0,10,4" Height="18"/>
+                <TextBox x:Name="userID" HorizontalAlignment="Right" VerticalAlignment="Top" Width="235" Margin="0,4,10,0" FontFamily="Microsoft Sans Serif" Height="19" TextChanged="TextBox_TextChanged" KeyDown="userID_KeyDown"/>
+                <TextBox x:Name="userName" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="235" Margin="0,0,10,4" Height="18" KeyDown="userName_KeyDown"/>
             </Grid>
 
             <Grid Width="350" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,75,0,0" Grid.Column="1" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,10,0" />
                 <Label Content="No of Days (8/9)" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="130" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Salary per day" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="130" FontFamily="Microsoft Sans Serif" Margin="0,0,0,2"/>
-                <TextBox x:Name="fullDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
-                <TextBox x:Name="salary" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18"/>
+                <TextBox x:Name="fullDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="fullDays_KeyDown" TextChanged="fullDays_TextChanged"/>
+                <TextBox x:Name="salary" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18" TextChanged="salary_TextChanged" KeyDown="salary_KeyDown"/>
                 <Label Content="No of Days (4/4.5)" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="130" FontFamily="Microsoft Sans Serif"/>
-                <TextBox x:Name="halfDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
-
+                <TextBox x:Name="halfDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="halfDays_KeyDown"/>
             </Grid>
 
 
@@ -39,28 +38,28 @@
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="300" Margin="0,0,0,-4" />
                 <Label Content="Start Date " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="End Date" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif" Margin="4,0,0,2"/>
-                <DatePicker x:Name="start" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0"/>
-                <DatePicker x:Name="end" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,0"/>
+                <DatePicker x:Name="start" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0" KeyDown="start_KeyDown"/>
+                <DatePicker x:Name="end" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,0" KeyDown="end_KeyDown"/>
             </Grid>
 
             <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,15,0,0" Grid.Column="2" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" />
                 <Label Content="Bank Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Bank ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox x:Name="bankName" HorizontalAlignment="Right" VerticalAlignment="Top" Width="215" Margin="0,4,4,0"/>
-                <TextBox x:Name="bankID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="215" Margin="0,0,4,4"/>
+                <TextBox x:Name="bankName" HorizontalAlignment="Right" VerticalAlignment="Top" Width="215" Margin="0,4,4,0" KeyDown="bankName_KeyDown"/>
+                <TextBox x:Name="bankID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="215" Margin="0,0,4,4" KeyDown="bankID_KeyDown"/>
             </Grid>
 
             <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,74,0,0" Grid.Column="2" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" />
                 <Label Content="Branch Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Branch ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox x:Name="branchName" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="4,4,4,4"/>
-                <TextBox x:Name="BranchID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4"/>
+                <TextBox x:Name="branchName" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="4,4,4,4" KeyDown="branchName_KeyDown"/>
+                <TextBox x:Name="BranchID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4" KeyDown="BranchID_KeyDown"/>
             </Grid>
 
             <Grid Margin="12,212,33,186" Grid.Column="1" Grid.ColumnSpan="2">
-                <Button Content="ADD" HorizontalAlignment="Left" Margin="196,0,0,0" VerticalAlignment="Center" Width="89" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif">
+                <Button x:Name="addToTable" Content="ADD" HorizontalAlignment="Left" Margin="196,0,0,0" VerticalAlignment="Center" Width="89" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />

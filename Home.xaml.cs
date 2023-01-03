@@ -22,6 +22,8 @@ namespace WpfAppDemoCPCBhathi
         public Home()
         {
             InitializeComponent();
+            btn1.Focus();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
