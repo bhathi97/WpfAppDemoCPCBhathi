@@ -19,18 +19,18 @@
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,4,0" />
                 <Label Content="User ID " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="User Name" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="235" Margin="0,4,10,0" FontFamily="Microsoft Sans Serif" Height="19"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="235" Margin="0,0,10,4" Height="18"/>
+                <TextBox x:Name="userID" HorizontalAlignment="Right" VerticalAlignment="Top" Width="235" Margin="0,4,10,0" FontFamily="Microsoft Sans Serif" Height="19" TextChanged="TextBox_TextChanged"/>
+                <TextBox x:Name="userName" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="235" Margin="0,0,10,4" Height="18"/>
             </Grid>
 
             <Grid Width="350" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,75,0,0" Grid.Column="1" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,10,0" />
                 <Label Content="No of Days (8/9)" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="130" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Salary per day" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="130" FontFamily="Microsoft Sans Serif" Margin="0,0,0,2"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18"/>
+                <TextBox x:Name="fullDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
+                <TextBox x:Name="salary" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18"/>
                 <Label Content="No of Days (4/4.5)" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="130" FontFamily="Microsoft Sans Serif"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
+                <TextBox x:Name="halfDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19"/>
 
             </Grid>
 
@@ -39,24 +39,24 @@
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="300" Margin="0,0,0,-4" />
                 <Label Content="Start Date " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="End Date" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif" Margin="4,0,0,2"/>
-                <DatePicker HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0"/>
-                <DatePicker HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,0"/>
+                <DatePicker x:Name="start" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0"/>
+                <DatePicker x:Name="end" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,0"/>
             </Grid>
 
             <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,15,0,0" Grid.Column="2" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" />
                 <Label Content="Bank Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Bank ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="215" Margin="0,4,4,0"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="215" Margin="0,0,4,4"/>
+                <TextBox x:Name="bankName" HorizontalAlignment="Right" VerticalAlignment="Top" Width="215" Margin="0,4,4,0"/>
+                <TextBox x:Name="bankID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="215" Margin="0,0,4,4"/>
             </Grid>
 
             <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,74,0,0" Grid.Column="2" >
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" />
-                <Label Content="Bank Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
-                <Label Content="Bank ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="4,4,4,4"/>
-                <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4"/>
+                <Label Content="Branch Name " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
+                <Label Content="Branch ID" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif"/>
+                <TextBox x:Name="branchName" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="4,4,4,4"/>
+                <TextBox x:Name="BranchID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4"/>
             </Grid>
 
             <Grid Margin="12,212,33,186" Grid.Column="1" Grid.ColumnSpan="2">
@@ -101,7 +101,7 @@
                     </Button.BorderBrush>
                 </Button>
             </Grid>
-            <DataGrid Margin="12,267,33,26" Grid.Column="1" Grid.ColumnSpan="2" />
+            <DataGrid x:Name="dataShow" Margin="12,267,33,26" Grid.Column="1" Grid.ColumnSpan="2" />
 
 
 

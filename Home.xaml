@@ -21,10 +21,6 @@
 
                 <Button x:Name="btnClose" Cursor="Hand" Margin="44,3,0,3" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontWeight="Bold" Content="X" Click="btnClose_Click" >
                     <Button.Resources>
-
-
-
-
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
                         </Style>

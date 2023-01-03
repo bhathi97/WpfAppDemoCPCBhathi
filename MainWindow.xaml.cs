@@ -25,6 +25,7 @@ namespace WpfAppDemoCPCBhathi
         public MainWindow()
         {
             InitializeComponent();
+            userid.Focus();
         }
         SqlConnection connection = new SqlConnection(@"Data Source=BHATHIYABANDARA;Initial Catalog=CPC;Integrated Security=True");
     
@@ -41,11 +42,6 @@ namespace WpfAppDemoCPCBhathi
 
         private void loginbtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            //Window2 window2 = new Window2();
-            //window2.Show();
-            //work until here
- 
             string id = userid.Text;
             string pw = userpw.Password;
             try
@@ -59,14 +55,23 @@ namespace WpfAppDemoCPCBhathi
                     this.Hide();
                     new Home().Show();
                 }
+
+                else 
+                {
+                    MessageBox.Show("invalid login", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    userid.Clear();
+                    userpw.Clear();
+                    userid.Focus();
+
+                }
+
+
             }
             catch 
             {
-                MessageBox.Show("invalid login","Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                userid.Clear();
-                userpw.Clear();
+                
+                MessageBox.Show("connection error","Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                userid.Focus();
             }
             finally 
             {
@@ -82,6 +87,41 @@ namespace WpfAppDemoCPCBhathi
 
             userid.Focus();
         }
+
+        private void userid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key== Key.Enter) 
+            {
+                userpw.Focus();
+            }
+        }
+
+       
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMax_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void userpw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                loginbtn.Focus();
+            }
+        }
+
+
 
 
 
