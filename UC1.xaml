@@ -106,8 +106,34 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
+                <Label Content="Table of updating salary details " HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Width="176" FontFamily="Microsoft Sans Serif"/>
             </Grid>
-            <DataGrid x:Name="dataShow" Margin="12,267,33,26" Grid.Column="1" Grid.ColumnSpan="2" />
+            <DataGrid x:Name="dataShow" Margin="-130,267,-130,18" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" >
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20" />
+                    </Style>
+                </DataGrid.Resources>
+
+
+
+            </DataGrid>
+
+
+
+            <Button x:Name="sendBtn" Content="SEND" Width="225" Height="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="2" Margin="0,0,33,-19" Background="#FFBD0000" Foreground="#FFF3F3F3" FontFamily="Microsoft Sans Serif">
+                <Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.BorderBrush>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </Button.Resources>
+            </Button>
 
 
 

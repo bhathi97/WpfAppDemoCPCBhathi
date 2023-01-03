@@ -146,60 +146,43 @@ namespace WpfAppDemoCPCBhathi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(userID.Text))
+            TextBox[] tbox = { userID, userName, bankName, bankID, branchName, BranchID, salary, fullDays, halfDays };
+            DatePicker[] dtbox = {start,end};
+            int count = 0;
+            int count2 = 0;
+            TextBox txt = new TextBox();
+            DatePicker dpk = new DatePicker();
+
+
+            foreach(var i in tbox)
             {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                userID.Focus();
+                if(string.IsNullOrEmpty(i.Text))
+                {
+                    count++;
+                    txt = i;
+                    break;
+                }
             }
-            else if (string.IsNullOrEmpty(userName.Text))
+
+            foreach (var i in dtbox)
             {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                userName.Focus();
+                if (string.IsNullOrEmpty(i.Text))
+                {
+                    count2++;
+                    dpk = i;
+                    break;
+                }
             }
-            else if (string.IsNullOrEmpty(start.Text))
+
+            if(count > 0) 
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                start.Focus();
+                txt.Focus();
             }
-            else if (string.IsNullOrEmpty(end.Text))
+            if(count2> 0)
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                end.Focus();
-            }
-            else if (string.IsNullOrEmpty(bankName.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                bankName.Focus();
-            }
-            else if (string.IsNullOrEmpty(bankID.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                bankID.Focus();
-            }
-            else if (string.IsNullOrEmpty(branchName.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                branchName.Focus();
-            }
-            else if (string.IsNullOrEmpty(BranchID.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                BranchID.Focus();
-            }
-            else if (string.IsNullOrEmpty(salary.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                salary.Focus();
-            }
-            else if (string.IsNullOrEmpty(fullDays.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                fullDays.Focus();
-            }
-            else if (string.IsNullOrEmpty(halfDays.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                halfDays.Focus();
+                dpk.Focus();
             }
             else
             {
@@ -219,12 +202,12 @@ namespace WpfAppDemoCPCBhathi
 
                 try
                 {
-
                     connection.Open();
                     SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + stDate + "','" + endDate + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
                     c1.ExecuteNonQuery();
                     GetdtToShow();
                     MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+                  
                 }
                 catch (Exception ex)
                 {
@@ -296,7 +279,22 @@ namespace WpfAppDemoCPCBhathi
             }
         }
 
-        
+        public void cleanAllTxt() 
+        {
+            userID.Clear();
+            userName.Clear();
+            //teTime stDate = DateTime.Parse(start.Text);
+            //teTime endDate = DateTime.Parse(end.Text);
+            bankName.Clear();
+            string bkID = bankID.Text;
+            string brName = branchName.Text;
+            string brID = BranchID.Text;
+            int daySal = int.Parse(salary.Text);
+            int fDay = int.Parse(fullDays.Text);
+            int hDay = int.Parse(halfDays.Text);
+            float dTotal = fDay + (hDay / 2);
+            float sTotal = dTotal * daySal;
+        }
 
     }
 }
