@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -165,11 +166,11 @@ namespace WpfAppDemoCPCBhathi
                 connection.Open();
                 SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('"+ uID + "','"+ uName + "','"+ stDate +"','" +endDate + "','" +bkID+ "','" + brID + "','" +fDay+ "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')",connection);
                 c1.ExecuteNonQuery();
-                MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.None);       
+                MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);       
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -178,5 +179,32 @@ namespace WpfAppDemoCPCBhathi
 
         }
 
+        public void GetdtToShow() 
+        {
+            SqlCommand c2 = new SqlCommand("SELECT * FROM data", connection);
+            SqlDataAdapter sd = new SqlDataAdapter(c2);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataShow.ItemsSource = dt.DefaultView;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                GetdtToShow();
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            { 
+                connection.Close(); 
+            }
+            
+            
+        }
     }
 }

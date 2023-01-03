@@ -72,7 +72,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button Content="UPDATE" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif">
+                <Button Content="UPDATE" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click_1">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
