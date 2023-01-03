@@ -166,6 +166,7 @@ namespace WpfAppDemoCPCBhathi
                 connection.Open();
                 SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('"+ uID + "','"+ uName + "','"+ stDate +"','" +endDate + "','" +bkID+ "','" + brID + "','" +fDay+ "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')",connection);
                 c1.ExecuteNonQuery();
+                GetdtToShow();
                 MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);       
             }
             catch(Exception ex)
@@ -193,7 +194,7 @@ namespace WpfAppDemoCPCBhathi
             try
             {
                 connection.Open();
-                GetdtToShow();
+                //GetdtToShow();
             }
             catch(Exception ex) 
             {
