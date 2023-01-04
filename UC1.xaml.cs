@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WpfAppDemoCPCBhathi
 {
@@ -146,44 +148,62 @@ namespace WpfAppDemoCPCBhathi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TextBox[] tbox = { userID, userName, bankName, bankID, branchName, BranchID, salary, fullDays, halfDays };
-            DatePicker[] dtbox = {start,end};
-            int count = 0;
-            int count2 = 0;
-            TextBox txt = new TextBox();
-            DatePicker dpk = new DatePicker();
-
-
-            foreach(var i in tbox)
-            {
-                if(string.IsNullOrEmpty(i.Text))
-                {
-                    count++;
-                    txt = i;
-                    break;
-                }
-            }
-
-            foreach (var i in dtbox)
-            {
-                if (string.IsNullOrEmpty(i.Text))
-                {
-                    count2++;
-                    dpk = i;
-                    break;
-                }
-            }
-
-            if(count > 0) 
+            if (string.IsNullOrEmpty(userID.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                txt.Focus();
+                userID.Focus();
             }
-            if(count2> 0)
+            else if (string.IsNullOrEmpty(userName.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                dpk.Focus();
+                userName.Focus();
             }
+            else if (string.IsNullOrEmpty(start.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                start.Focus();
+            }
+            else if (string.IsNullOrEmpty(end.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                end.Focus();
+            }
+            else if (string.IsNullOrEmpty(bankName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                bankName.Focus();
+            }
+            else if (string.IsNullOrEmpty(bankID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                bankID.Focus();
+            }
+            else if (string.IsNullOrEmpty(branchName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                branchName.Focus();
+            }
+            else if (string.IsNullOrEmpty(BranchID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                BranchID.Focus();
+            }
+            else if (string.IsNullOrEmpty(salary.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                salary.Focus();
+            }
+            else if (string.IsNullOrEmpty(fullDays.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                fullDays.Focus();
+            }
+            else if (string.IsNullOrEmpty(halfDays.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                halfDays.Focus();
+            }
+
             else
             {
                 string uID = userID.Text;
@@ -207,7 +227,7 @@ namespace WpfAppDemoCPCBhathi
                     c1.ExecuteNonQuery();
                     GetdtToShow();
                     MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
-                  
+                    cleanAllTxt();
                 }
                 catch (Exception ex)
                 {
@@ -230,45 +250,36 @@ namespace WpfAppDemoCPCBhathi
             sd.Fill(dt);
             dataShow.ItemsSource = dt.DefaultView;
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                connection.Open();
-                GetdtToShow();
-            }
-            catch(Exception ex) 
-            {
-                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            { 
-                connection.Close(); 
-            }
-            
-            
-        }
-
+        
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            try
+            if (string.IsNullOrEmpty(sBox.Text))
             {
-                connection.Open();
-                SqlCommand c3 = new SqlCommand("DELETE FROM data WHERE ID = '" + sBox.Text + "'", connection);
-                c3.ExecuteNonQuery();
-                GetdtToShow();
-                MessageBox.Show("Successfully deleted from table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Delete User ID = ?", "error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (MessageBox.Show("Delete the record ?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand c3 = new SqlCommand("DELETE FROM data WHERE ID = '" + sBox.Text + "'", connection);
+                        c3.ExecuteNonQuery();
+                        GetdtToShow();
+                        MessageBox.Show("Successfully deleted from table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
             }
-            finally
-            {
-                connection.Close();
-            }
-
+            
         }
 
         private void sBox_KeyDown(object sender, KeyEventArgs e)
@@ -281,20 +292,189 @@ namespace WpfAppDemoCPCBhathi
 
         public void cleanAllTxt() 
         {
-            userID.Clear();
-            userName.Clear();
-            //teTime stDate = DateTime.Parse(start.Text);
-            //teTime endDate = DateTime.Parse(end.Text);
-            bankName.Clear();
-            string bkID = bankID.Text;
-            string brName = branchName.Text;
-            string brID = BranchID.Text;
-            int daySal = int.Parse(salary.Text);
-            int fDay = int.Parse(fullDays.Text);
-            int hDay = int.Parse(halfDays.Text);
-            float dTotal = fDay + (hDay / 2);
-            float sTotal = dTotal * daySal;
+            TextBox[] txtBoxes = { userID, userName, bankName, bankID, branchName, BranchID, salary, fullDays, halfDays};
+            foreach(var i in txtBoxes)
+            {
+                i.Clear();
+            }
+            start.Text = string.Empty;
+            end.Text = string.Empty;
         }
 
+        
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+        Regex regex = new Regex("[^0-9]+");
+        e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Button_Click(sender, e);
+            /*
+            try
+            {
+                connection.Open();
+                GetdtToShow();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            */
+
+
+
+
+            if (string.IsNullOrEmpty(userID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                userID.Focus();
+            }
+            else if (string.IsNullOrEmpty(userName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                userName.Focus();
+            }
+            else if (string.IsNullOrEmpty(start.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                start.Focus();
+            }
+            else if (string.IsNullOrEmpty(end.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                end.Focus();
+            }
+            else if (string.IsNullOrEmpty(bankName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                bankName.Focus();
+            }
+            else if (string.IsNullOrEmpty(bankID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                bankID.Focus();
+            }
+            else if (string.IsNullOrEmpty(branchName.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                branchName.Focus();
+            }
+            else if (string.IsNullOrEmpty(BranchID.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                BranchID.Focus();
+            }
+            else if (string.IsNullOrEmpty(salary.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                salary.Focus();
+            }
+            else if (string.IsNullOrEmpty(fullDays.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                fullDays.Focus();
+            }
+            else if (string.IsNullOrEmpty(halfDays.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                halfDays.Focus();
+            }
+
+            else
+            {
+                
+                string uID = userID.Text;
+                string uName = userName.Text;
+                DateTime stDate = DateTime.Parse(start.Text);
+                DateTime endDate = DateTime.Parse(end.Text);
+                string bkName = bankName.Text;
+                string bkID = bankID.Text;
+                string brName = branchName.Text;
+                string brID = BranchID.Text;
+                float daySal = float.Parse(salary.Text);
+                int fDay = int.Parse(fullDays.Text);
+                int hDay = int.Parse(halfDays.Text);
+                float dTotal = fDay + (hDay / 2);
+                float sTotal = dTotal * daySal;
+
+                try
+                {
+                    string a = doSome(sender);
+                    connection.Open();
+                    SqlCommand c1 = new SqlCommand("UPDATE data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + stDate + "','" + endDate + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "') WHERE ID = '"+ a +"'", connection);
+                    c1.ExecuteNonQuery();
+                    GetdtToShow();
+                    MessageBox.Show("Successfully updated the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    cleanAllTxt();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            
+
+
+
+
+
+
+
+
+        }
+
+        private void dataShow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid gdc = (DataGrid)sender;
+            DataRowView rowSelect = gdc.SelectedItem as DataRowView;
+            if(rowSelect != null)
+            {
+                userID.Text = rowSelect["ID"].ToString();
+                userName.Text = rowSelect["name"].ToString();
+                bankID.Text = rowSelect["bankCode"].ToString();
+                bankName.Text = rowSelect["bankName"].ToString();
+                branchName.Text = rowSelect["branchName"].ToString();
+                BranchID.Text = rowSelect["branchCode"].ToString();
+                salary.Text = rowSelect["salaryPerDay"].ToString();
+                fullDays.Text = rowSelect["fullDays"].ToString();
+                halfDays.Text = rowSelect["halfDays"].ToString();
+                start.Text = rowSelect["timeFrom"].ToString();
+                end.Text = rowSelect["timeTo"].ToString();
+
+                
+                
+            }
+        }
+
+        public string doSome (object sender)
+        {
+            DataGrid gdc = (DataGrid)sender;
+            DataRowView rowSelect = gdc.SelectedItem as DataRowView;
+            if (rowSelect != null)
+            {
+                string a = rowSelect["ID"].ToString();
+                return a;
+                
+            }
+            return null;
+        }
+
+
+
+        private void addNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            cleanAllTxt();
+            userID.Focus();
+        }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfAppDemoCPCBhathi"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="-2,0,2,0" Background="#FFF4F6F7">
+    <Grid Margin="-2,0,2,0" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
         <Label Content="Add salary details here" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Microsoft Sans Serif" Width="166"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="810" Height="450" >
             <Grid.ColumnDefinitions>
@@ -27,26 +27,38 @@
                 <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,10,0" />
                 <Label Content="No of Days (8/9)" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="130" FontFamily="Microsoft Sans Serif" />
                 <Label Content="Salary per day" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="130" FontFamily="Microsoft Sans Serif" Margin="0,0,0,2"/>
-                <TextBox x:Name="fullDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="fullDays_KeyDown" TextChanged="fullDays_TextChanged"/>
-                <TextBox x:Name="salary" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18" TextChanged="salary_TextChanged" KeyDown="salary_KeyDown"/>
+                <TextBox x:Name="fullDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,4,16,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="fullDays_KeyDown" TextChanged="fullDays_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+
+
+
+
+                <TextBox x:Name="salary" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="149" Margin="0,0,16,4" Height="18" TextChanged="salary_TextChanged" KeyDown="salary_KeyDown" PreviewTextInput="NumberValidationTextBox"/>
                 <Label Content="No of Days (4/4.5)" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="130" FontFamily="Microsoft Sans Serif"/>
-                <TextBox x:Name="halfDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="halfDays_KeyDown"/>
+                <TextBox x:Name="halfDays" HorizontalAlignment="Right" VerticalAlignment="Top" Width="188" Margin="0,30,16,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="halfDays_KeyDown" PreviewTextInput="NumberValidationTextBox" />
             </Grid>
 
 
-            <Grid Width="350" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,165,0,0" Grid.Column="1" Grid.ColumnSpan="2" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,10,26" />
-                <Label Content="Delete User ID =" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="121" FontFamily="Microsoft Sans Serif" Margin="20,12,0,0"/>
-                <TextBox x:Name="sBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="146,14,0,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="sBox_KeyDown"/>
+            <Grid Width="350" Height="76" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="59,172,0,0" Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="75*"/>
+                </Grid.RowDefinitions>
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="20,-1,20,27" Grid.RowSpan="2" />
+                <Label Content="Delete User ID =" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="121" FontFamily="Microsoft Sans Serif" Margin="20,11,0,0" Grid.Row="1"/>
+                <TextBox x:Name="sBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="146,13,0,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="sBox_KeyDown" Grid.Row="1"/>
             </Grid>
 
 
-            <Grid Width="300" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,134,0,0" Grid.Column="2" >
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="300" Margin="0,0,0,-4" />
-                <Label Content="Start Date " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" />
-                <Label Content="End Date" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="100" FontFamily="Microsoft Sans Serif" Margin="4,0,0,2"/>
-                <DatePicker x:Name="start" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,4,4,0" KeyDown="start_KeyDown"/>
-                <DatePicker x:Name="end" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,4,0" KeyDown="end_KeyDown"/>
+            <Grid Width="292" Height="52" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,160,0,0" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="22*"/>
+                    <RowDefinition Height="31*"/>
+                </Grid.RowDefinitions>
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="292" Margin="0,-2,0,-9" Grid.RowSpan="2" />
+                <Label Content="Start Date " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="78" FontFamily="Microsoft Sans Serif" Margin="5,2,0,0" Grid.RowSpan="2" />
+                <Label Content="End Date" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="84" FontFamily="Microsoft Sans Serif" Margin="4,0,0,-5" Height="26" Grid.Row="1"/>
+                <DatePicker x:Name="start" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Margin="0,2,5,0" KeyDown="start_KeyDown" Grid.RowSpan="2"/>
+                <DatePicker x:Name="end" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,5,-3" KeyDown="end_KeyDown" Grid.Row="1"/>
             </Grid>
 
             <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,15,0,0" Grid.Column="2" >
@@ -65,8 +77,12 @@
                 <TextBox x:Name="BranchID" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="4,4,4,4" KeyDown="BranchID_KeyDown"/>
             </Grid>
 
-            <Grid Margin="12,218,33,180" Grid.Column="1" Grid.ColumnSpan="2">
-                <Button x:Name="addToTable" Content="ADD" HorizontalAlignment="Left" Margin="196,0,0,0" VerticalAlignment="Center" Width="89" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click">
+            <Grid Margin="12,225,33,180" Grid.Column="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="503*"/>
+                    <ColumnDefinition Width="235*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="addToTable" Content="ADD TO TABLE" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center" Width="100" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -79,7 +95,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button Content="UPDATE" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click_1">
+                <Button x:Name="updateBtn" Content="UPDATE" HorizontalAlignment="Left" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="updateBtn_Click" Margin="372,0,0,0">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -93,7 +109,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button x:Name="delBtn" Content="DELETE" HorizontalAlignment="Left" Margin="416,0,0,11" VerticalAlignment="Bottom" Width="88" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click_2">
+                <Button x:Name="delBtn" Content="DELETE" HorizontalAlignment="Left" Margin="146,0,0,0" VerticalAlignment="Center" Width="88" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click_2" Grid.Column="1">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -106,18 +122,21 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Label Content="Table of updating salary details " HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Width="176" FontFamily="Microsoft Sans Serif"/>
+                <Button x:Name="addNewBtn" Content="ADD NEW" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="addNewBtn_Click" Margin="1,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5" />
+                        </Style>
+                    </Button.Resources>
+                    <Button.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="White" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.BorderBrush>
+                </Button>
             </Grid>
-            <DataGrid x:Name="dataShow" Margin="-130,267,-130,18" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" >
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="20" />
-                    </Style>
-                </DataGrid.Resources>
-
-
-
-            </DataGrid>
+            <DataGrid x:Name="dataShow" Margin="-100,279,-100,14" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{x:Null}" FontFamily="Microsoft Sans Serif" SelectionMode="Single" SelectionChanged="dataShow_SelectionChanged" />
 
 
 
