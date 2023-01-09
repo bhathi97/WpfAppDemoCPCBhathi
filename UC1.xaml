@@ -143,7 +143,7 @@
 
 
 
-            <Button x:Name="sendBtn" Content="SEND" Width="225" Height="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="2" Margin="0,0,33,-19" Background="#FFBD0000" Foreground="#FFF3F3F3" FontFamily="Microsoft Sans Serif">
+            <Button x:Name="sendBtn" Content="SEND" Width="225" Height="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="2" Margin="0,0,33,-19" Background="#FFBD0000" Foreground="#FFF3F3F3" FontFamily="Microsoft Sans Serif" Click="sendBtn_Click">
                 <Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="1"/>

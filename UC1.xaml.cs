@@ -228,28 +228,28 @@ namespace WpfAppDemoCPCBhathi
                 try
                 {
                     connection.Open();
-
-                    SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM aData WHERE ID ='" + uID +"' AND month ='"+ month +"' AND year ='"+ year +"'", connection);
+                    /*SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM aData WHERE ID ='" + userID.Text + "' AND month ='"+ monthTxt.Text +"' AND year ='" + yearTxt.Text + "'", connection);
                     DataTable dt = new DataTable(); 
                     sda.Fill(dt);
-                    if (dt.Rows[0][0].ToString() == "1")
-                    {
-                        MessageBox.Show("Error", "allready exist", MessageBoxButton.OK, MessageBoxImage.Error);
-                        userID.Focus();
-                    }
-                    else
-                    {
+                    if (dt.Rows[0].ToString() == null)
+                    {*/
+                        
                         SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
                         c1.ExecuteNonQuery();
                         GetdtToShow();
                         MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
                         cleanAllTxt();
-                    }
+                    //}
+                    /*else
+                    {
+                        MessageBox.Show("Error", "allready exist", MessageBoxButton.OK, MessageBoxImage.Error);
+                        userID.Focus();
+                    }*/
    
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -289,7 +289,7 @@ namespace WpfAppDemoCPCBhathi
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     finally
                     {
@@ -411,7 +411,7 @@ namespace WpfAppDemoCPCBhathi
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -534,15 +534,52 @@ namespace WpfAppDemoCPCBhathi
                     BranchID.Text = er["branchID"].ToString();
 
                 }
+                
             }
             catch (Exception ee)
             {
-                MessageBox.Show("loading error", "loading error", MessageBoxButton.OK);
+                //MessageBox.Show(ee.Message, "loading error1", MessageBoxButton.OK);
             }
-            finally { connection.Close(); }
+            finally 
+            {
+                connection.Close(); 
+            }
 
         }
 
-        
+        private void sendBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT count(ID) FROM data", connection);
+                DataTable dt = new DataTable(); 
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "0")
+                {
+                    MessageBox.Show("Table is currently empty", "Error", MessageBoxButton.OK);
+                }
+                else 
+                {
+                    SqlCommand sqlCommand = new SqlCommand("INSERT INTO aData SELECT * FROM data", connection);
+                    sqlCommand.ExecuteNonQuery();
+                    SqlCommand sqlCommand2 = new SqlCommand("TRUNCATE TABLE data", connection);
+                    sqlCommand2.ExecuteNonQuery();
+                    MessageBox.Show("copied to the main table", "COPIED", MessageBoxButton.OK, MessageBoxImage.Information);
+                    GetdtToShow();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            
+        }
     }
 }
