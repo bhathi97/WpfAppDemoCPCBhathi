@@ -91,7 +91,7 @@
 
 
                     </Button>
-                    <Button x:Name="btn2" Content="Data " Margin="0,139,0,0" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="#FF0C0B0B" FontWeight="Bold" FontSize="14" Width="148" VerticalAlignment="Top" Grid.Row="1" FontFamily="Microsoft Sans Serif">
+                    <Button x:Name="btn2" Content="History" Margin="0,139,0,0" Height="70" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="#FF0C0B0B" FontWeight="Bold" FontSize="14" Width="148" VerticalAlignment="Top" Grid.Row="1" FontFamily="Microsoft Sans Serif" Click="btn2_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5" />

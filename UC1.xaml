@@ -85,7 +85,7 @@
                     <ColumnDefinition Width="503*"/>
                     <ColumnDefinition Width="235*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="addToTable" Content="ADD TO TABLE" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center" Width="100" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click">
+                <Button x:Name="addToTable" Content="ADD TO TABLE" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="Button_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -98,7 +98,7 @@
                         </LinearGradientBrush>
                     </Button.BorderBrush>
                 </Button>
-                <Button x:Name="updateBtn" Content="UPDATE" HorizontalAlignment="Left" VerticalAlignment="Center" Width="90" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="updateBtn_Click" Margin="372,0,0,0">
+                <Button x:Name="updateBtn" Content="UPDATE" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontFamily="Microsoft Sans Serif" Click="updateBtn_Click" Margin="372,0,0,0">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5" />
@@ -139,7 +139,7 @@
                     </Button.BorderBrush>
                 </Button>
             </Grid>
-            <DataGrid x:Name="dataShow" Margin="-100,279,-100,14" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{x:Null}" FontFamily="Microsoft Sans Serif" SelectionMode="Single" SelectionChanged="dataShow_SelectionChanged" />
+            <DataGrid x:Name="dataShow" Margin="10,279,0,14" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{x:Null}" FontFamily="Microsoft Sans Serif" SelectionMode="Single" SelectionChanged="dataShow_SelectionChanged" />
 
 
 

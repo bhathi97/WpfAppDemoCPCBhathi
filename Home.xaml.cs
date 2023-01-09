@@ -64,5 +64,10 @@ namespace WpfAppDemoCPCBhathi
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            uc1.Content = new UC2();
+        }
     }
 }
