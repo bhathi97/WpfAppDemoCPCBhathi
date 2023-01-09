@@ -228,15 +228,28 @@ namespace WpfAppDemoCPCBhathi
                 try
                 {
                     connection.Open();
-                    SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
-                    c1.ExecuteNonQuery();
-                    GetdtToShow();
-                    MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    cleanAllTxt();
+
+                    SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM aData WHERE ID ='" + uID +"' AND month ='"+ month +"' AND year ='"+ year +"'", connection);
+                    DataTable dt = new DataTable(); 
+                    sda.Fill(dt);
+                    if (dt.Rows[0][0].ToString() == "1")
+                    {
+                        MessageBox.Show("Error", "allready exist", MessageBoxButton.OK, MessageBoxImage.Error);
+                        userID.Focus();
+                    }
+                    else
+                    {
+                        SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
+                        c1.ExecuteNonQuery();
+                        GetdtToShow();
+                        MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        cleanAllTxt();
+                    }
+   
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -374,8 +387,8 @@ namespace WpfAppDemoCPCBhathi
                 
                 string uID = userID.Text;
                 string uName = userName.Text;
-                DateTime month = DateTime.Parse(monthTxt.Text);
-                DateTime year = DateTime.Parse(yearTxt.Text);
+                string month = monthTxt.Text;
+                int year = int.Parse(yearTxt.Text);
                 string bkName = bankName.Text;
                 string bkID = bankID.Text;
                 string brName = branchName.Text;
