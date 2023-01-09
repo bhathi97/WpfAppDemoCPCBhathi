@@ -19,18 +19,24 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WpfAppDemoCPCBhathi
 {
-    /// <summary>
-    /// Interaction logic for UC1.xaml
-    /// </summary>
+   
     public partial class UC1 : UserControl
     {
-        public UC1()
+        public string[] months { get; set; }
+        public int[] years { get; set; }
+        public UC1()    
         {
+            
             InitializeComponent();
             userID.Focus();
+            months = new string[] { "january", "february", "march", "april", "may", "june", "july", "august", "september", "octomber", "november", "december" };
+            years = new int[] {2022,2023,2024,2025,2026 };
+            DataContext = this;
+            //FillComboBox();
         }
         SqlConnection connection = new SqlConnection(@"Data Source=BHATHIYABANDARA;Initial Catalog=CPC;Integrated Security=True");
 
@@ -44,16 +50,11 @@ namespace WpfAppDemoCPCBhathi
         {
             if (e.Key == Key.Enter)
             {
-                userName.Focus();
+                fullDays.Focus();
             }
         }
 
         
-        private void salary_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void userName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -79,23 +80,49 @@ namespace WpfAppDemoCPCBhathi
             
         }
 
-        private void bankName_KeyDown(object sender, KeyEventArgs e)
+        private void bankNameList_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 bankID.Focus();
             }
-            
+
         }
 
         private void salary_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
             {
-                bankName.Focus();
+                monthTxt.Focus();
             }
             
         }
+
+        private void monthTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                yearTxt.Focus();
+            }
+
+        }
+
+        private void yearTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                bankName.Focus();
+            }
+        }
+
+        private void bankName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                bankID.Focus();
+            }
+        }
+
 
         private void bankID_KeyDown(object sender, KeyEventArgs e)
         {
@@ -106,46 +133,24 @@ namespace WpfAppDemoCPCBhathi
             
         }
 
-        private void BranchID_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.Enter)
-            {
-                start.Focus();
-            }
-            
-        }
-
-        private void end_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.Enter)
-            {
-                addToTable.Focus();
-            }
-           
-        }
-
-        private void start_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.Enter)
-            {
-                end.Focus();
-            }
-            
-        }
-
-        private void fullDays_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void branchName_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key== Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 BranchID.Focus();
             }
         }
 
+        private void BranchID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                addToTable.Focus();
+            }
+            
+        }
+
+        //add to table
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(userID.Text))
@@ -158,15 +163,15 @@ namespace WpfAppDemoCPCBhathi
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 userName.Focus();
             }
-            else if (string.IsNullOrEmpty(start.Text))
+            else if (string.IsNullOrEmpty(monthTxt.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                start.Focus();
+                monthTxt.Focus();
             }
-            else if (string.IsNullOrEmpty(end.Text))
+            else if (string.IsNullOrEmpty(yearTxt.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                end.Focus();
+                yearTxt.Focus();
             }
             else if (string.IsNullOrEmpty(bankName.Text))
             {
@@ -208,8 +213,8 @@ namespace WpfAppDemoCPCBhathi
             {
                 string uID = userID.Text;
                 string uName = userName.Text;
-                DateTime stDate = DateTime.Parse(start.Text);
-                DateTime endDate = DateTime.Parse(end.Text);
+                DateTime month = DateTime.Parse(monthTxt.Text);
+                DateTime year = DateTime.Parse(yearTxt.Text);
                 string bkName = bankName.Text;
                 string bkID = bankID.Text;
                 string brName = branchName.Text;
@@ -223,7 +228,7 @@ namespace WpfAppDemoCPCBhathi
                 try
                 {
                     connection.Open();
-                    SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + stDate + "','" + endDate + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
+                    SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
                     c1.ExecuteNonQuery();
                     GetdtToShow();
                     MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -292,13 +297,14 @@ namespace WpfAppDemoCPCBhathi
 
         public void cleanAllTxt() 
         {
-            TextBox[] txtBoxes = { userID, userName, bankName, bankID, branchName, BranchID, salary, fullDays, halfDays};
+            TextBox[] txtBoxes = { userID, userName, bankID, branchName, BranchID, salary, fullDays, halfDays, bankName};
             foreach(var i in txtBoxes)
             {
                 i.Clear();
             }
-            start.Text = string.Empty;
-            end.Text = string.Empty;
+            monthTxt.Text = string.Empty;
+            yearTxt.Text = string.Empty;
+           
         }
 
         
@@ -308,28 +314,9 @@ namespace WpfAppDemoCPCBhathi
         e.Handled = regex.IsMatch(e.Text);
         }
 
+        //update button
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Button_Click(sender, e);
-            /*
-            try
-            {
-                connection.Open();
-                GetdtToShow();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            */
-
-
-
-
             if (string.IsNullOrEmpty(userID.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -340,21 +327,17 @@ namespace WpfAppDemoCPCBhathi
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 userName.Focus();
             }
-            else if (string.IsNullOrEmpty(start.Text))
+            else if (string.IsNullOrEmpty(monthTxt.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                start.Focus();
+                monthTxt.Focus();
             }
-            else if (string.IsNullOrEmpty(end.Text))
+            else if (string.IsNullOrEmpty(yearTxt.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                end.Focus();
+                yearTxt.Focus();
             }
-            else if (string.IsNullOrEmpty(bankName.Text))
-            {
-                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                bankName.Focus();
-            }
+            
             else if (string.IsNullOrEmpty(bankID.Text))
             {
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -391,8 +374,8 @@ namespace WpfAppDemoCPCBhathi
                 
                 string uID = userID.Text;
                 string uName = userName.Text;
-                DateTime stDate = DateTime.Parse(start.Text);
-                DateTime endDate = DateTime.Parse(end.Text);
+                DateTime month = DateTime.Parse(monthTxt.Text);
+                DateTime year = DateTime.Parse(yearTxt.Text);
                 string bkName = bankName.Text;
                 string bkID = bankID.Text;
                 string brName = branchName.Text;
@@ -407,7 +390,7 @@ namespace WpfAppDemoCPCBhathi
                 {
                     string a = doSome(sender);
                     connection.Open();
-                    SqlCommand c1 = new SqlCommand("UPDATE data (ID, name, timeFrom, timeTo, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + stDate + "','" + endDate + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "') WHERE ID = '"+ a +"'", connection);
+                    SqlCommand c1 = new SqlCommand("UPDATE data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, branchName, bankName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + brName + "','" + bkName + "') WHERE ID = '" + a +"'", connection);
                     c1.ExecuteNonQuery();
                     GetdtToShow();
                     MessageBox.Show("Successfully updated the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -422,15 +405,7 @@ namespace WpfAppDemoCPCBhathi
                     connection.Close();
                 }
             }
-            
-
-
-
-
-
-
-
-
+   
         }
 
         private void dataShow_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -448,10 +423,8 @@ namespace WpfAppDemoCPCBhathi
                 salary.Text = rowSelect["salaryPerDay"].ToString();
                 fullDays.Text = rowSelect["fullDays"].ToString();
                 halfDays.Text = rowSelect["halfDays"].ToString();
-                start.Text = rowSelect["timeFrom"].ToString();
-                end.Text = rowSelect["timeTo"].ToString();
-
-                
+                monthTxt.Text = rowSelect["month"].ToString();
+                yearTxt.Text = rowSelect["year"].ToString();  
                 
             }
         }
@@ -476,5 +449,87 @@ namespace WpfAppDemoCPCBhathi
             cleanAllTxt();
             userID.Focus();
         }
+
+
+        /*protected void FillComboBox()
+        {
+            
+            try
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Banks", connection);
+                SqlDataReader er = cmd.ExecuteReader();
+                while (er.Read()) 
+                {
+                    string bankName = er.GetString(1);
+                    bankNameList.Items.Add(bankName);
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("error", "error", MessageBoxButton.OK);
+            }
+            finally
+            { 
+                connection.Close(); 
+            }
+        }*/
+
+        /*private void bankNameList_DropDownOpened(object sender, EventArgs e)
+        {
+            FillComboBox();
+            MessageBox.Show("aa","aa",MessageBoxButton.YesNo);
+        }*/
+
+ /*       private void bankNameList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try 
+            {
+                connection.Open();
+                SqlCommand cmdAuto1 = new SqlCommand("SELECT * FROM Banks WHERE BankName = '" + bankNameList.Text + "'", connection);
+                SqlDataReader er = cmdAuto1.ExecuteReader();
+                while (er.Read())
+                {
+                    bankID.Text = er["BankID"].ToString();
+                    
+
+                }
+            }catch(Exception ee)
+            {
+                MessageBox.Show("loading error", "loading error", MessageBoxButton.OK);
+            }
+            finally { connection.Close(); }
+            
+
+        }*/
+
+        private void userID_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                SqlCommand cmdAuto2 = new SqlCommand("SELECT * FROM master WHERE userID = '" + userID.Text + "'", connection);
+                SqlDataReader er = cmdAuto2.ExecuteReader();
+                while (er.Read())
+                {
+                    userName.Text = er["userName"].ToString();
+                    bankName.Text = er["bankName"].ToString();
+                    bankID.Text = er["bankID"].ToString();
+                    branchName.Text = er["branchName"].ToString();
+                    BranchID.Text = er["branchID"].ToString();
+
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("loading error", "loading error", MessageBoxButton.OK);
+            }
+            finally { connection.Close(); }
+
+        }
+
+        
     }
 }
