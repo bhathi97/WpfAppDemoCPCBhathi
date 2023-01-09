@@ -213,8 +213,8 @@ namespace WpfAppDemoCPCBhathi
             {
                 string uID = userID.Text;
                 string uName = userName.Text;
-                DateTime month = DateTime.Parse(monthTxt.Text);
-                DateTime year = DateTime.Parse(yearTxt.Text);
+                string month = monthTxt.Text;
+                int year = int.Parse(yearTxt.Text);
                 string bkName = bankName.Text;
                 string bkID = bankID.Text;
                 string brName = branchName.Text;
