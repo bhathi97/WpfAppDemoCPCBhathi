@@ -71,7 +71,7 @@
                             Content="-"
                             Foreground="Black"
                             FontSize="16"
-                            FontFamily="Arial Black"
+                            FontFamily="Bahnschrift"
                             Cursor="Hand"
                             Grid.Column="1" 
                             Click="btnMin_Click">
@@ -110,7 +110,7 @@
                             Content="x"
                             Foreground="Black"
                             FontSize="15"
-                            FontFamily="Arial Black"
+                            FontFamily="Bahnschrift SemiBold"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Cursor="Hand"
@@ -225,7 +225,7 @@
                             Content="LOGIN"
                             Foreground="#FFD72E27"
                             FontSize="14"
-                            FontFamily="Arial Black"
+                            FontFamily="Yu Gothic UI Semibold"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Cursor="Hand"
@@ -256,26 +256,22 @@
                                         Background="{TemplateBinding Background}"
                                         BorderThickness="1" 
                                         BorderBrush="Black">
-                                        <ContentPresenter VerticalAlignment="Center" 
+                                    <ContentPresenter VerticalAlignment="Center" 
                                                           HorizontalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
 
-
-
-
                     </Button>
 
-
-
-
-
-
-
-
-
-
+                    <TextBlock Foreground="DarkGray"
+                               Text="CPC head office | Intern salaries management system project IT function"
+                               FontFamily="Yu Gothic UI Semibold"
+                               FontSize="9"
+                               Margin="0,40,0,0"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"/>
 
                 </StackPanel>
 
