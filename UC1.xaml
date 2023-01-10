@@ -43,9 +43,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="75*"/>
                 </Grid.RowDefinitions>
-                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="20,-1,20,27" Grid.RowSpan="2" />
-                <Label Content="Delete User ID =" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="121" FontFamily="Microsoft Sans Serif" Margin="20,11,0,0" Grid.Row="1"/>
-                <TextBox x:Name="sBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="146,13,0,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="sBox_KeyDown" Grid.Row="1"/>
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="39,-1,20,27" Grid.RowSpan="2" />
+                <Label Content="Delete User ID =" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" FontFamily="Microsoft Sans Serif" Margin="44,11,0,0" Grid.Row="1"/>
+                <TextBox x:Name="sBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="131" Margin="175,13,0,0" FontFamily="Microsoft Sans Serif" Height="19" KeyDown="sBox_KeyDown" Grid.Row="1"/>
             </Grid>
 
 
@@ -139,7 +139,7 @@
                     </Button.BorderBrush>
                 </Button>
             </Grid>
-            <DataGrid x:Name="dataShow" Margin="10,279,0,14" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{x:Null}" FontFamily="Microsoft Sans Serif" SelectionMode="Single" SelectionChanged="dataShow_SelectionChanged" />
+            <DataGrid x:Name="dataShow" Margin="-100,279,-100,14" Grid.ColumnSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Background="{x:Null}" FontFamily="Microsoft Sans Serif" SelectionMode="Single" SelectionChanged="dataShow_SelectionChanged" />
 
 
 
@@ -156,6 +156,11 @@
                     </Style>
                 </Button.Resources>
             </Button>
+            <Grid Width="324" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,133,0,0" Grid.Column="2" >
+                <Border BorderThickness="1" CornerRadius="7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" HorizontalAlignment="Center" Width="324" Margin="0,0,0,20" />
+                <Label Content="Account no :" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" FontFamily="Microsoft Sans Serif" Margin="4,0,0,0" />
+                <TextBox x:Name="accNoTxt" HorizontalAlignment="Right" VerticalAlignment="Top" Width="229" Margin="0,3,6,0" KeyDown="accNoTxt_KeyDown"/>
+            </Grid>
 
 
 

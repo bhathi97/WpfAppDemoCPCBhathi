@@ -145,10 +145,19 @@ namespace WpfAppDemoCPCBhathi
         {
             if(e.Key == Key.Enter)
             {
-                addToTable.Focus();
+                accNoTxt.Focus();
             }
             
         }
+
+        private void accNoTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                addToTable.Focus();
+            }
+        }
+
 
         //add to table
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -208,6 +217,11 @@ namespace WpfAppDemoCPCBhathi
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 halfDays.Focus();
             }
+            else if (string.IsNullOrEmpty(accNoTxt.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                accNoTxt.Focus();
+            }
 
             else
             {
@@ -222,29 +236,33 @@ namespace WpfAppDemoCPCBhathi
                 int daySal = int.Parse(salary.Text);
                 int fDay = int.Parse(fullDays.Text);
                 int hDay = int.Parse(halfDays.Text);
-                float dTotal = fDay + (hDay / 2);
+                float hd = float.Parse(halfDays.Text);
+                float dTotal = fDay + (hd / 2);
                 float sTotal = dTotal * daySal;
+                string acc = accNoTxt.Text;
 
                 try
                 {
                     connection.Open();
-                    /*SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM aData WHERE ID ='" + userID.Text + "' AND month ='"+ monthTxt.Text +"' AND year ='" + yearTxt.Text + "'", connection);
+                    SqlDataAdapter sda = new SqlDataAdapter("SELECT count(ID) FROM aData WHERE ID ='" + userID.Text + "' AND month ='"+ monthTxt.Text +"' AND year ='" + yearTxt.Text + "'", connection);
+                    SqlDataAdapter sda1 = new SqlDataAdapter("SELECT count(ID) FROM data WHERE ID ='" + userID.Text + "'", connection);
+                    DataTable dt1 = new DataTable();
+                    sda1.Fill(dt1);
                     DataTable dt = new DataTable(); 
                     sda.Fill(dt);
-                    if (dt.Rows[0].ToString() == null)
-                    {*/
-                        
-                        SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "')", connection);
+                    if (dt.Rows[0][0].ToString() == "0" && dt1.Rows[0][0].ToString() == "0")
+                    {
+                        SqlCommand c1 = new SqlCommand("INSERT INTO data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, bankName, branchName, accNo ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + bkName + "','" + brName + "','" + acc + "')", connection);
                         c1.ExecuteNonQuery();
                         GetdtToShow();
                         MessageBox.Show("Successfully added to the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
                         cleanAllTxt();
-                    //}
-                    /*else
+                    }
+                    else
                     {
                         MessageBox.Show("Error", "allready exist", MessageBoxButton.OK, MessageBoxImage.Error);
                         userID.Focus();
-                    }*/
+                    }
    
                 }
                 catch (Exception ex)
@@ -310,7 +328,7 @@ namespace WpfAppDemoCPCBhathi
 
         public void cleanAllTxt() 
         {
-            TextBox[] txtBoxes = { userID, userName, bankID, branchName, BranchID, salary, fullDays, halfDays, bankName};
+            TextBox[] txtBoxes = { userID, userName, bankID, branchName, BranchID, salary, fullDays, halfDays, bankName, accNoTxt};
             foreach(var i in txtBoxes)
             {
                 i.Clear();
@@ -381,6 +399,11 @@ namespace WpfAppDemoCPCBhathi
                 MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 halfDays.Focus();
             }
+            else if (string.IsNullOrEmpty(accNoTxt.Text))
+            {
+                MessageBox.Show("field is empty", "empty field", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                accNoTxt.Focus();
+            }
 
             else
             {
@@ -396,14 +419,16 @@ namespace WpfAppDemoCPCBhathi
                 float daySal = float.Parse(salary.Text);
                 int fDay = int.Parse(fullDays.Text);
                 int hDay = int.Parse(halfDays.Text);
-                float dTotal = fDay + (hDay / 2);
+                float hd = float.Parse(halfDays.Text);
+                float dTotal = fDay + (hd / 2);
                 float sTotal = dTotal * daySal;
+                string acc = accNoTxt.Text;
 
                 try
                 {
                     string a = doSome(sender);
                     connection.Open();
-                    SqlCommand c1 = new SqlCommand("UPDATE data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, branchName, bankName ) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + brName + "','" + bkName + "') WHERE ID = '" + a +"'", connection);
+                    SqlCommand c1 = new SqlCommand("UPDATE data (ID, name, month, year, bankCode, branchCode, fullDays, halfDays, days, salaryPerDay, total, branchName, bankName, accNo) VALUES ('" + uID + "','" + uName + "','" + month + "','" + year + "','" + bkID + "','" + brID + "','" + fDay + "','" + hDay + "','" + dTotal + "','" + daySal + "','" + sTotal + "','" + brName + "','" + bkName + "," + acc + "') WHERE ID = '" + a +"'", connection);
                     c1.ExecuteNonQuery();
                     GetdtToShow();
                     MessageBox.Show("Successfully updated the table", "success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -437,7 +462,8 @@ namespace WpfAppDemoCPCBhathi
                 fullDays.Text = rowSelect["fullDays"].ToString();
                 halfDays.Text = rowSelect["halfDays"].ToString();
                 monthTxt.Text = rowSelect["month"].ToString();
-                yearTxt.Text = rowSelect["year"].ToString();  
+                yearTxt.Text = rowSelect["year"].ToString();
+                accNoTxt.Text = rowSelect["accNo"].ToString();
                 
             }
         }
@@ -532,6 +558,7 @@ namespace WpfAppDemoCPCBhathi
                     bankID.Text = er["bankID"].ToString();
                     branchName.Text = er["branchName"].ToString();
                     BranchID.Text = er["branchID"].ToString();
+                    accNoTxt.Text = er["accNo"].ToString();
 
                 }
                 
@@ -581,5 +608,7 @@ namespace WpfAppDemoCPCBhathi
             }
             
         }
+
+        
     }
 }

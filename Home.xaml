@@ -63,6 +63,7 @@
 
 
         <Grid Width="150" HorizontalAlignment="Left" Margin="2,30,2,2">
+            
             <Border BorderThickness="1" CornerRadius="20" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" HorizontalAlignment="Left">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

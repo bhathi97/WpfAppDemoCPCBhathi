@@ -68,6 +68,7 @@ namespace WpfAppDemoCPCBhathi
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
             uc1.Content = new UC2();
+            
         }
     }
 }

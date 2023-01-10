@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FFF9ECEC">
-        <DataGrid x:Name="internData" Margin="20,40,599,20" HorizontalAlignment="Left" Width="200"/>
+        <DataGrid x:Name="internData" Margin="20,40,599,20" HorizontalAlignment="Left" Width="200" SelectionChanged="internData_SelectionChanged"/>
 
         <Label Content="Interns" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="116" FontFamily="Microsoft Sans Serif" FontSize="14"/>
         <Label Content="History " HorizontalAlignment="Left" Margin="245,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.014,0.495" FontFamily="Microsoft Sans Serif" FontSize="14"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=12}" Margin="246,40,42,151"/>
+        <DataGrid x:Name="allData" d:ItemsSource="{d:SampleData ItemCount=12}" Margin="246,40,42,151"/>
         <Grid VerticalAlignment="Bottom" Width="200" Margin="51,0,549,71" Height="63">
             <Border BorderThickness="1" CornerRadius="20" HorizontalAlignment="Left" Width="180" Margin="-1,0,0,0">
                 <Border.BorderBrush>
