@@ -1,0 +1,291 @@
+﻿<Window x:Class="WpfAppDemoCPCBhathi.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppDemoCPCBhathi.View"
+        mc:Ignorable="d"
+        Title="LoginView" Height="600" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_mouseDown"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border CornerRadius="10" >
+        <Border.Background>
+            <ImageBrush ImageSource="/images/bgLogin.jpg"/>
+        </Border.Background>
+        <Border CornerRadius="10" 
+                BorderThickness="1" 
+                Opacity="0.96">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" 
+                                     EndPoint="1,1" >
+                    <GradientStop Color="#ff0000"
+                                  Offset="0"/>
+                    <GradientStop Color="#fa4d59" 
+                                  Offset="0.5"/>
+                    <GradientStop Color="#ff0000"
+                                  Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" 
+                                     EndPoint="1,1" >
+                    <GradientStop Color="#8f0303" 
+                                  Offset="0"/>
+                    <GradientStop Color="#2b0601" 
+                                  Offset="0.5"/>
+                    <GradientStop Color="#8f0303" 
+                                  Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="LOGIN PAGE"
+                               Foreground="DarkGray"
+                               FontSize="15"
+                               FontFamily="Yu Gothic UI Semibold"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="15,0,0,0">
+                    </TextBlock>
+                    <Button x:Name="btnMin"
+                            Background="LightGray"
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="Black"
+                            FontSize="16"
+                            FontFamily="Arial Black"
+                            Cursor="Hand"
+                            Grid.Column="1" 
+                            Click="btnMin_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" 
+                                        Value="LightGray"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" 
+                                             Value="True">
+                                        <Setter Property="Background" 
+                                                Value="Gray"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="20" 
+                                        Height="20" 
+                                        CornerRadius="9" 
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" 
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <Button x:Name="btnMax"
+                            Background="LightPink"
+                            BorderThickness="0"
+                            Content="x"
+                            Foreground="Black"
+                            FontSize="15"
+                            FontFamily="Arial Black"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Cursor="Hand"
+                            Grid.Column="2" 
+                            Click="btnMax_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" 
+                                        Value="LightPink"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" 
+                                             Value="True">
+                                        <Setter Property="Background" 
+                                                Value="Pink"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="20" 
+                                        Height="20" 
+                                        CornerRadius="9" 
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" 
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <StackPanel Width="250" 
+                            Grid.Row="2" 
+                            Orientation="Vertical" 
+                            Margin="0,20,0,20">
+
+                    <Image Source="/images/logo .png" 
+                           Width="100" 
+                           Height="100"/>
+
+                    <TextBlock Foreground="White"
+                               Text="Ceylon Petroleum Corporation"
+                               FontFamily="Yu Gothic UI Semibold"
+                               HorizontalAlignment="Center"
+                               FontSize="18"/>
+
+                    <TextBlock Foreground="DarkGray"
+                               Text="ENERGIZING THE FUTURE"
+                               FontFamily="Yu Gothic UI Semibold"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               FontSize="11"/>
+
+                    <TextBlock Foreground="LightGray"
+                               Text="Username"
+                               Margin="0,40,0,0"
+                               FontSize="15"
+                               FontFamily="Yu Gothic UI Semibold"/>
+
+                    <TextBox x:Name="userID"
+                             FontSize="15"
+                             Foreground="White"
+                             FontFamily="Yu Gothic UI Semibold"
+                             CaretBrush="LightPink"
+                             BorderBrush="LightGray"
+                             BorderThickness="0,0,0,1"
+                             Margin="0,5,0,0"
+                             VerticalAlignment="Center"
+                             Height="25"
+                             Padding="30,0,0,0">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/images/user.png"
+                                        Stretch="Uniform"
+                                        AlignmentX="Left"
+                                        />
+                        </TextBox.Background>
+
+                    </TextBox>
+
+                    <TextBlock Foreground="LightGray"
+                               Text="Password"
+                               Margin="0,20,0,0"
+                               FontSize="15"
+                               FontFamily="Yu Gothic UI Semibold"/>
+
+                    <PasswordBox x:Name="userPW"
+                                 FontSize="15"
+                                 Foreground="White"
+                                 FontFamily="Yu Gothic UI Semibold"
+                                 CaretBrush="LightPink"
+                                 BorderBrush="LightGray"
+                                 BorderThickness="0,0,0,1"
+                                 Margin="0,5,0,0"
+                                 VerticalAlignment="Center"
+                                 Height="25"
+                                 Padding="30,0,0,0">
+
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/images/password.png"
+                                        Stretch="Uniform"
+                                        AlignmentX="Left"/>
+                        </PasswordBox.Background>
+
+                    </PasswordBox>
+
+
+
+                    <Button x:Name="btnLog"
+                            Background = "White"
+                            BorderThickness="1"
+                            Content="LOGIN"
+                            Foreground="#FFD72E27"
+                            FontSize="14"
+                            FontFamily="Arial Black"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Cursor="Hand"
+                            Grid.Column="2" 
+                            Click="btnLog_Click"
+                            Margin="0,50,0,0" 
+                            BorderBrush="#FFF7F1F1">
+
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" 
+                                        Value="LightPink"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" 
+                                             Value="True">
+                                        <Setter Property="Background" 
+                                                Value="Pink"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" 
+                                        Height="35" 
+                                        CornerRadius="15" 
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="1" 
+                                        BorderBrush="Black">
+                                        <ContentPresenter VerticalAlignment="Center" 
+                                                          HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+
+
+
+                    </Button>
+
+
+
+
+
+
+
+
+
+
+
+                </StackPanel>
+
+
+            </Grid>
+
+
+        </Border>
+    </Border>
+
+
+
+</Window>
