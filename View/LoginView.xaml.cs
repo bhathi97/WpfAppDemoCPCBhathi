@@ -42,9 +42,6 @@ namespace WpfAppDemoCPCBhathi.View
             Application.Current.Shutdown();
         }
 
-        private void btnLog_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

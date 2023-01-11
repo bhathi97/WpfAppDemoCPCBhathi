@@ -4,6 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDemoCPCBhathi.View"
+        
+        xmlns:viewModel = "clr-namespace:WpfAppDemoCPCBhathi.ViewModel" 
+        xmlns:cc = "clr-namespace:WpfAppDemoCPCBhathi.Customs"
+        
         mc:Ignorable="d"
         Title="LoginView" Height="600" Width="800"
         WindowStyle="None"
@@ -13,6 +17,27 @@
         Background="Transparent"
         AllowsTransparency="True">
 
+    <!--eastablish viewModel context-->
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+
+    <!--visibility  class have 3 states. so we have to have convert-->
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisible"/>
+    </Window.Resources>
+    
+    <!--window visibility property-->
+    <Window.Visibility>
+        <Binding Path="IsViewVisible" 
+                 Mode="TwoWay" 
+                 Converter="{StaticResource BoolToVisible}"/>
+    </Window.Visibility>
+    
+    
+    
+    
+    
     <Border CornerRadius="10" >
         <Border.Background>
             <ImageBrush ImageSource="/images/bgLogin.jpg"/>
@@ -172,6 +197,7 @@
                                FontFamily="Yu Gothic UI Semibold"/>
 
                     <TextBox x:Name="userID"
+                             Text="{Binding Username}"
                              FontSize="15"
                              Foreground="White"
                              FontFamily="Yu Gothic UI Semibold"
@@ -182,6 +208,7 @@
                              VerticalAlignment="Center"
                              Height="25"
                              Padding="30,0,0,0">
+                        
                         <TextBox.Background>
                             <ImageBrush ImageSource="/images/user.png"
                                         Stretch="Uniform"
@@ -197,26 +224,17 @@
                                FontSize="15"
                                FontFamily="Yu Gothic UI Semibold"/>
 
-                    <PasswordBox x:Name="userPW"
-                                 FontSize="15"
-                                 Foreground="White"
-                                 FontFamily="Yu Gothic UI Semibold"
-                                 CaretBrush="LightPink"
-                                 BorderBrush="LightGray"
-                                 BorderThickness="0,0,0,1"
-                                 Margin="0,5,0,0"
-                                 VerticalAlignment="Center"
-                                 Height="25"
-                                 Padding="30,0,0,0">
+                    <cc:BindablePWBox pw="{Binding Password}"
+                                      Height="25"
+                                      Margin="0,5,0,0">
+                    </cc:BindablePWBox>
 
-                        <PasswordBox.Background>
-                            <ImageBrush ImageSource="/images/password.png"
-                                        Stretch="Uniform"
-                                        AlignmentX="Left"/>
-                        </PasswordBox.Background>
-
-                    </PasswordBox>
-
+                    <TextBlock Foreground="Red" 
+                               Text="{Binding ErrorMessage}"
+                               Margin="0,10,0,0"
+                               TextWrapping="Wrap"
+                               FontSize="15"
+                               FontFamily="Yu Gothic UI Semibold"/>
 
 
                     <Button x:Name="btnLog"
@@ -230,7 +248,7 @@
                             HorizontalAlignment="Center"
                             Cursor="Hand"
                             Grid.Column="2" 
-                            Click="btnLog_Click"
+                            Command="{Binding LoginCommand}"
                             Margin="0,50,0,0" 
                             BorderBrush="#FFF7F1F1">
 
