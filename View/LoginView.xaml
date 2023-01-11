@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfAppDemoCPCBhathi.View"
         
         xmlns:viewModel = "clr-namespace:WpfAppDemoCPCBhathi.ViewModel" 
-        xmlns:cc = "clr-namespace:WpfAppDemoCPCBhathi.Customs"
+        
         
         mc:Ignorable="d"
         Title="LoginView" Height="600" Width="800"
@@ -44,7 +44,7 @@
         </Border.Background>
         <Border CornerRadius="10" 
                 BorderThickness="1" 
-                Opacity="0.96">
+                Opacity="0.92">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" 
                                      EndPoint="1,1" >
@@ -91,10 +91,10 @@
                                Margin="15,0,0,0">
                     </TextBlock>
                     <Button x:Name="btnMin"
-                            Background="LightGray"
+                            
                             BorderThickness="0"
                             Content="-"
-                            Foreground="Black"
+                            
                             FontSize="16"
                             FontFamily="Bahnschrift"
                             Cursor="Hand"
@@ -105,11 +105,15 @@
                             <Style TargetType="Button">
                                 <Setter Property="Background" 
                                         Value="LightGray"/>
+                                <Setter Property="Foreground" 
+                                        Value="Black"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" 
                                              Value="True">
                                         <Setter Property="Background" 
-                                                Value="Gray"/>
+                                                Value="Black"/>
+                                        <Setter Property="Foreground" 
+                                        Value="LightGray"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -130,10 +134,10 @@
                     </Button>
 
                     <Button x:Name="btnMax"
-                            Background="LightPink"
+                            
                             BorderThickness="0"
                             Content="x"
-                            Foreground="Black"
+                            
                             FontSize="15"
                             FontFamily="Bahnschrift SemiBold"
                             VerticalAlignment="Center"
@@ -146,11 +150,15 @@
                             <Style TargetType="Button">
                                 <Setter Property="Background" 
                                         Value="LightPink"/>
+                                <Setter Property="Foreground"
+                                        Value="Black"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" 
                                              Value="True">
                                         <Setter Property="Background" 
-                                                Value="Pink"/>
+                                                Value="Black"/>
+                                        <Setter Property="Foreground"
+                                        Value="LightPink"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -197,7 +205,7 @@
                                FontFamily="Yu Gothic UI Semibold"/>
 
                     <TextBox x:Name="userID"
-                             Text="{Binding Username}"
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="15"
                              Foreground="White"
                              FontFamily="Yu Gothic UI Semibold"
@@ -224,10 +232,26 @@
                                FontSize="15"
                                FontFamily="Yu Gothic UI Semibold"/>
 
-                    <cc:BindablePWBox pw="{Binding Password}"
-                                      Height="25"
-                                      Margin="0,5,0,0">
-                    </cc:BindablePWBox>
+                    <PasswordBox x:Name="userPW"
+                                 FontSize="15"
+                                 Foreground="White"
+                                 FontFamily="Yu Gothic UI Semibold"
+                                 CaretBrush="LightPink"
+                                 BorderBrush="LightGray"
+                                 BorderThickness="0,0,0,1"
+                                 Margin="0,5,0,0"
+                                 VerticalAlignment="Center"
+                                 Height="25"
+                                 Padding="30,0,0,0">
+
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/images/password.png"
+                                        Stretch="Uniform"
+                                        AlignmentX="Left"
+                                        />
+                        </PasswordBox.Background>
+
+                    </PasswordBox>
 
                     <TextBlock Foreground="Red" 
                                Text="{Binding ErrorMessage}"
@@ -238,10 +262,10 @@
 
 
                     <Button x:Name="btnLog"
-                            Background = "White"
+                            
                             BorderThickness="1"
                             Content="LOGIN"
-                            Foreground="#FFD72E27"
+                            
                             FontSize="14"
                             FontFamily="Yu Gothic UI Semibold"
                             VerticalAlignment="Center"
@@ -249,19 +273,23 @@
                             Cursor="Hand"
                             Grid.Column="2" 
                             Command="{Binding LoginCommand}"
-                            Margin="0,50,0,0" 
-                            BorderBrush="#FFF7F1F1">
+                            Margin="0,40,0,0" 
+                            BorderBrush="#FFF7F1F1" Click="btnLog_Click">
 
 
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" 
-                                        Value="LightPink"/>
+                                        Value="White"/>
+                                <Setter Property="Foreground"
+                                        Value="#FFD72E27"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" 
                                              Value="True">
                                         <Setter Property="Background" 
-                                                Value="Pink"/>
+                                                Value="red"/>
+                                        <Setter Property="Foreground" 
+                                                Value="White"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>

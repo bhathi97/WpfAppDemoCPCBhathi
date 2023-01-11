@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WpfAppDemoCPCBhathi.Model;
+using WpfAppDemoCPCBhathi.Repos;
 
 namespace WpfAppDemoCPCBhathi.ViewModel
 {
@@ -17,6 +20,8 @@ namespace WpfAppDemoCPCBhathi.ViewModel
         private SecureString _password; //not nessesararaly this data type 
         private string _errorMessage;
         private bool _isViewVisible = true;
+
+        private IUserLoginRepo userLoginRepo;
 
         //properties
         public string Username 
@@ -62,13 +67,14 @@ namespace WpfAppDemoCPCBhathi.ViewModel
         //constructor
         public LoginViewModel() 
         {
+            userLoginRepo = new LoginUserRepository();
             LoginCommand = new ViewModelCommand(ExcecuteLoginCommand, CanExcecuteLoginCommand);
         }
 
         private bool CanExcecuteLoginCommand(object obj)
         {
             bool validate;
-            if(string.IsNullOrWhiteSpace(Username) || Username.Length < 2 || Password == null || Password.Length < 2) 
+            if(string.IsNullOrWhiteSpace(Username) || Username.Length < 2) 
             {
                 validate = false;
             }
@@ -82,7 +88,7 @@ namespace WpfAppDemoCPCBhathi.ViewModel
 
         private void ExcecuteLoginCommand(object obj)
         {
-            throw new NotImplementedException();
+            var isValidUser = userLoginRepo.AuthUser(new NetworkCredential(Username, Password));
         }
     }
 }
