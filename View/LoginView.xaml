@@ -48,11 +48,11 @@
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" 
                                      EndPoint="1,1" >
-                    <GradientStop Color="#ff0000"
+                    <GradientStop Color="{StaticResource winbcolor1}"
                                   Offset="0"/>
-                    <GradientStop Color="#fa4d59" 
+                    <GradientStop Color="{StaticResource winbcolor2}" 
                                   Offset="0.5"/>
-                    <GradientStop Color="#ff0000"
+                    <GradientStop Color="{StaticResource winbcolor1}"
                                   Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
@@ -274,7 +274,7 @@
                             Grid.Column="2" 
                             Command="{Binding LoginCommand}"
                             Margin="0,40,0,0" 
-                            BorderBrush="#FFF7F1F1" Click="btnLog_Click">
+                            BorderBrush="#FFF7F1F1"   Click="btnLog_Click">
 
 
                         <Button.Style>

@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--background colors-->
+    <Color x:Key="bgcolor1">#8f0303</Color>
+    <Color x:Key="bgcolor2">#2b0601</Color>
+    
+    <!--windows border colors-->
+    <Color x:Key="winbcolor1">#ff0000</Color>
+    <Color x:Key="winbcolor2">#fa4d59</Color>
+    
+    <!--color palatte-->
+    <SolidColorBrush x:Key="pcolor1">white</SolidColorBrush>
+    
+    <!--font colors-->
+    <SolidColorBrush x:Key="tcolor1">white</SolidColorBrush>
+    <SolidColorBrush x:Key="tcolor2">DarkGray</SolidColorBrush>
+    <SolidColorBrush x:Key="tcolor3">LightGray</SolidColorBrush>
+    
+    <!--panal colors-->
+    
+    
+    <!--button colors-->
+    <SolidColorBrush x:Key="bfcolor1">#FFD72E27</SolidColorBrush>
+    <SolidColorBrush x:Key="bfcolor2">white</SolidColorBrush>
+    <SolidColorBrush x:Key="bbcolor1">white</SolidColorBrush>
+    <SolidColorBrush x:Key="bbcolor2">red</SolidColorBrush>
+    
+    <!--textBox colors-->
+    
+    
+</ResourceDictionary>
