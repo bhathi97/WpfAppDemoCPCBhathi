@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace WpfAppDemoCPCBhathi.View
@@ -21,7 +22,7 @@ namespace WpfAppDemoCPCBhathi.View
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginView : System.Windows.Window
     {
         public LoginView()
         {
@@ -71,7 +72,8 @@ namespace WpfAppDemoCPCBhathi.View
                 if (dt.Rows[0][0].ToString() == "1")
                 {
                     this.Hide();
-                    new Home().Show();
+                    HomeView win2 = new HomeView();
+                    win2.Show();
                 }
 
                 else

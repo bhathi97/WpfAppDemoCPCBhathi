@@ -10,14 +10,20 @@
     <Color x:Key="winbcolor2">#fa4d59</Color>
     
     <!--color palatte-->
-    <SolidColorBrush x:Key="pcolor1">white</SolidColorBrush>
-    
+    <SolidColorBrush x:Key="plolor1">white</SolidColorBrush>
+
+
+    <!--title colors-->
+    <SolidColorBrush x:Key="titlecolor1">white</SolidColorBrush>
+
     <!--font colors-->
     <SolidColorBrush x:Key="tcolor1">white</SolidColorBrush>
     <SolidColorBrush x:Key="tcolor2">DarkGray</SolidColorBrush>
     <SolidColorBrush x:Key="tcolor3">LightGray</SolidColorBrush>
     
     <!--panal colors-->
+    <SolidColorBrush x:Key="pcolor1">blue</SolidColorBrush>
+    <SolidColorBrush x:Key="pcolor2">yellow</SolidColorBrush>
     
     
     <!--button colors-->
@@ -25,7 +31,11 @@
     <SolidColorBrush x:Key="bfcolor2">white</SolidColorBrush>
     <SolidColorBrush x:Key="bbcolor1">white</SolidColorBrush>
     <SolidColorBrush x:Key="bbcolor2">red</SolidColorBrush>
-    
+    <SolidColorBrush x:Key="bfcolor3">#610202</SolidColorBrush>
+    <SolidColorBrush x:Key="menubfcolor1">#FFD72E27</SolidColorBrush>
+    <SolidColorBrush x:Key="barbtn1">#ffff33</SolidColorBrush>
+   
+    <SolidColorBrush x:Key="menubfcolor2">#780202</SolidColorBrush>
     <!--textBox colors-->
     
     

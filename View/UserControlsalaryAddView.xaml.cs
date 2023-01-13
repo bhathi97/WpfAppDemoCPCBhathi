@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfAppDemoCPCBhathi.View
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for UserControlsalaryAddView.xaml
     /// </summary>
-    public partial class MainView : Page
+    public partial class UserControlsalaryAddView : UserControl
     {
-        public MainView()
+        public UserControlsalaryAddView()
         {
             InitializeComponent();
         }
